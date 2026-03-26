@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paty Home Bakery | La Madre Masas Artesanales · Zapopan</title>
+  <meta name="description" content="Pan artesanal de fermentación lenta. Pide por WhatsApp, recibe en casa. Masa madre, pizzas artesanales, repostería y bebidas funcionales. Zapopan, Jalisco."/>
+  <meta property="og:title" content="Paty Home Bakery | La Madre Masas Artesanales"/>
+  <meta property="og:description" content="Pan artesanal de fermentación lenta. Pide por WhatsApp, recibe en casa."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://web-pearl-chi-65.vercel.app"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #faf6f0;
+      --brown-dark: #3b1f0e;
+      --brown-mid: #6b3a1f;
+      --brown-light: #c4894a;
+      --gold: #d4a853;
+      --green: #3d6b4f;
+      --text: #2d1a0e;
+      --text-muted: #7a5c44;
+      --white: #ffffff;
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.15);
+      --shadow: 0 8px 32px rgba(59,31,14,0.12);
+      --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(250,246,240,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(196,137,74,0.2);
+      padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--brown-dark); text-decoration: none; }
+    .nav-brand span { color: var(--brown-light); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--brown-mid); }
+    .nav-cta { background: var(--brown-mid); color: white; padding: .5rem 1.2rem; border-radius: 50px; text-decoration: none; font-size: .875rem; font-weight: 600; transition: background .2s, transform .2s; }
+    .nav-cta:hover { background: var(--brown-dark); transform: translateY(-1px); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--brown-dark); border-radius: 2px; transition: all .3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; padding: 100px 5% 80px;
+      background: linear-gradient(135deg, #3b1f0e 0%, #6b3a1f 40%, #c4894a 100%);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(212,168,83,0.15) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 620px; }
+    .hero-eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 6vw, 4.5rem); font-weight: 700; color: white; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero p { font-size: 1.1rem; color: rgba(255,255,255,.78); margin-bottom: 2.5rem; max-width: 500px; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--gold); color: var(--brown-dark); padding: .9rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all .25s; display: inline-flex; align-items: center; gap: .5rem; }
+    .btn-primary:hover { background: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    .btn-secondary { border: 2px solid rgba(255,255,255,.4); color: white; padding: .9rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all .25s; }
+    .btn-secondary:hover { border-color: white; background: rgba(255,255,255,.1); transform: translateY(-2px); }
+
+    /* ── HISTORIA ── */
+    .historia { padding: 100px 5%; background: white; }
+    .section-label { font-size: .75rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--brown-light); margin-bottom: .75rem; }
+    .historia h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--brown-dark); margin-bottom: 1.5rem; max-width: 580px; }
+    .historia p { color: var(--text-muted); font-size: 1.05rem; max-width: 620px; margin-bottom: 1.5rem; }
+    .pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .pillar { background: var(--cream); border-radius: var(--radius); padding: 1.5rem; border: 1px solid rgba(196,137,74,.15); }
+    .pillar-icon { font-size: 2rem; margin-bottom: .75rem; }
+    .pillar h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--brown-dark); margin-bottom: .5rem; }
+    .pillar p { font-size: .9rem; color: var(--text-muted); margin: 0; }
+
+    /* ── MENÚ ── */
+    .menu-section { padding: 100px 5%; background: var(--cream); }
+    .menu-section > .section-label, .menu-section > h2 { text-align: center; display: block; width: 100%; }
+    .menu-section > h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--brown-dark); margin-bottom: 0.75rem; }
+    .menu-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 4rem; font-size: 1rem; }
+    .menu-category { margin-bottom: 4rem; }
+    .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .category-icon { width: 48px; height: 48px; background: var(--brown-mid); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .category-header h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--brown-dark); }
+    .category-header p { font-size: .85rem; color: var(--text-muted); }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1.25rem; }
+    .product-card {
+      background: white; border-radius: var(--radius); padding: 1.5rem;
+      border: 1px solid rgba(196,137,74,.15); box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: .75rem;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .product-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(59,31,14,.16); }
+    .product-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+    .product-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--brown-dark); font-weight: 600; }
+    .product-price { font-weight: 700; font-size: 1.05rem; color: var(--brown-mid); white-space: nowrap; }
+    .product-desc { font-size: .85rem; color: var(--text-muted); line-height: 1.5; flex: 1; }
+    .product-variants { font-size: .8rem; color: var(--green); font-style: italic; }
+    .product-cta {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: #25d366; color: white; text-decoration: none;
+      padding: .55rem 1.1rem; border-radius: 50px; font-size: .85rem; font-weight: 600;
+      transition: background .2s, transform .2s; align-self: flex-start; margin-top: .25rem;
+    }
+    .product-cta:hover { background: #1da851; transform: translateY(-1px); }
+    .category-note { background: rgba(196,137,74,.08); border-left: 3px solid var(--brown-light); padding: .75rem 1rem; border-radius: 0 8px 8px 0; font-size: .85rem; color: var(--text-muted); margin-top: 1rem; }
+
+    /* ── CÓMO PEDIR ── */
+    .como-pedir { padding: 100px 5%; background: linear-gradient(135deg, var(--brown-dark) 0%, var(--brown-mid) 100%); }
+    .como-pedir .section-label { color: var(--gold); }
+    .como-pedir h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: white; margin-bottom: 3.5rem; max-width: 480px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2rem; }
+    .step { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: var(--radius); padding: 2rem; backdrop-filter: blur(8px); }
+    .step-num { font-size: 3rem; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 1rem; opacity: .8; }
+    .step h4 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: white; margin-bottom: .75rem; }
+    .step p { font-size: .9rem; color: rgba(255,255,255,.7); }
+    .como-cta { margin-top: 3rem; text-align: center; }
+
+    /* ── FAQ ── */
+    .faq { padding: 100px 5%; background: white; }
+    .faq h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--brown-dark); margin-bottom: 3rem; max-width: 480px; }
+    .faq-list { max-width: 760px; display: flex; flex-direction: column; gap: 1rem; }
+    .faq-item { border: 1px solid rgba(196,137,74,.2); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { padding: 1.25rem 1.5rem; font-weight: 600; color: var(--brown-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: white; transition: background .2s; }
+    .faq-q:hover { background: var(--cream); }
+    .faq-q::after { content: '+'; font-size: 1.4rem; color: var(--brown-light); flex-shrink: 0; }
+    .faq-a { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .35s; }
+    .faq-a p { padding-bottom: 1.25rem; color: var(--text-muted); font-size: .95rem; }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-item.open .faq-q::after { content: '−'; }
+
+    /* ── PEDIDO ESPECIAL ── */
+    .pedido-especial { padding: 80px 5%; background: var(--cream); text-align: center; }
+    .pedido-especial h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem,3.5vw,2.6rem); color: var(--brown-dark); margin-bottom: 1rem; }
+    .pedido-especial p { color: var(--text-muted); max-width: 560px; margin: 0 auto 2rem; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--brown-dark); color: rgba(255,255,255,.7); padding: 60px 5% 30px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: white; margin-bottom: .75rem; }
+    .footer-brand p { font-size: .9rem; line-height: 1.7; max-width: 320px; }
+    .footer-col h4 { font-size: .8rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .footer-col a { color: rgba(255,255,255,.65); text-decoration: none; font-size: .9rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: .8rem; }
+    .footer-bottom a { color: rgba(255,255,255,.4); text-decoration: none; }
+    .footer-bottom a:hover { color: var(--gold); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 999;
+      width: 58px; height: 58px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.45); text-decoration: none;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,.55); }
+    .wa-float svg { width: 30px; height: 30px; fill: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 64px; left: 0; width: 100%; background: white; padding: 1.5rem 5%; gap: 1.25rem; border-bottom: 1px solid rgba(196,137,74,.2); }
+      .nav-links.open + .nav-cta { display: block; position: absolute; top: 130px; right: 5%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-brand">Paty Home <span>Bakery</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#historia">Nuestra Historia</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#como-pedir">Cómo Pedir</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20un%20pedido%20🍞" class="nav-cta" target="_blank" rel="noopener">Pedir Ahora</a>
+  <div class="nav-toggle" id="navToggle" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">🌾 Zapopan, Jalisco · Elaborado a pedido</p>
+    <h1>El buen pan <em>no tiene prisa.</em></h1>
+    <p>Masa madre de fermentación lenta, pizzas artesanales, repostería y bebidas funcionales. Todo con amor, tiempo y sin aditivos — directo a tu puerta.</p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20mi%20pedido%20🍞" class="btn-primary" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+        Hacer mi pedido
+      </a>
+      <a href="#menu" class="btn-secondary">Ver el Menú</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── HISTORIA ── -->
+<section class="historia" id="historia">
+  <p class="section-label">Nuestra Historia</p>
+  <h2>El Arte de la Paciencia</h2>
+  <p>Hace 15 años descubrí que el pan artesanal no es solo comida: es un acto de amor y respeto por el tiempo. Hoy, Panadería Paty es mi misión y mi forma de llevar a tu mesa un pan que respira, que fermenta y que tiene alma.</p>
+  <p>Nuestro pan de masa madre fermenta durante <strong>48 horas</strong> para lograr esa corteza crujiente, el interior suave y el sabor inconfundible que solo el tiempo puede dar. Nada de aditivos. Nada de prisa.</p>
+  <div class="pillars">
+    <div class="pillar"><div class="pillar-icon">🌾</div><h4>Fermentación Natural</h4><p>48 horas de fermentación lenta. Sin levaduras industriales ni aditivos.</p></div>
+    <div class="pillar"><div class="pillar-icon">🏠</div><h4>Elaborado a Pedido</h4><p>Cada producto se hace cuando tú lo pides, no en serie. Máxima frescura.</p></div>
+    <div class="pillar"><div class="pillar-icon">🍕</div><h4>Home-Bake Pizzas</h4><p>Bases artesanales congeladas. Tú las horneas en casa en 15 min.</p></div>
+    <div class="pillar"><div class="pillar-icon">🌿</div><h4>Bebidas Funcionales</h4><p>Shots de bienestar y jugos cold pressed con ingredientes de primera.</p></div>
+  </div>
+</section>
+
+<!-- ── MENÚ ── -->
+<section class="menu-section" id="menu">
+  <p class="section-label">Nuestra Carta</p>
+  <h2>Todo elaborado a pedido</h2>
+  <p class="menu-subtitle">Toca el producto que te antoja y escríbenos por WhatsApp — te decimos exactamente cuándo está listo.</p>
+
+  <!-- I. MASA MADRE -->
+  <div class="menu-category">
+    <div class="category-header">
+      <div class="category-icon">🌾</div>
+      <div>
+        <h3>Especialidades de Masa Madre</h3>
+        <p>Fermentación natural 48h · Entrega en 2 días hábiles</p>
+      </div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Hogaza Natural</span><span class="product-price">$85</span></div>
+        <p class="product-desc">Hogaza de masa madre de fermentación lenta. Corteza crujiente, miga suave y sabor inigualable.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20una%20Hogaza%20Natural%20🍞" target="_blank" rel="noopener" id="btn-hogaza-natural">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Hogaza Con Semillas</span><span class="product-price">$95</span></div>
+        <p class="product-desc">La clásica hogaza enriquecida con mezcla de semillas naturales. Crujiente y nutritiva.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20una%20Hogaza%20Con%20Semillas" target="_blank" rel="noopener" id="btn-hogaza-semillas">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Hogaza Dátil & Nuez</span><span class="product-price">$160</span></div>
+        <p class="product-desc">La joya de nuestra panadería. Masa madre con dátiles y nueces — dulce natural sin azúcar añadida.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20una%20Hogaza%20D%C3%A1til%20y%20Nuez" target="_blank" rel="noopener" id="btn-hogaza-datil">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Pan de Caja Natural</span><span class="product-price">$120</span></div>
+        <p class="product-desc">Pan de caja de masa madre para el día a día. Sin conservadores, sin aditivos — pura fermentación.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pan%20de%20Caja%20Natural" target="_blank" rel="noopener" id="btn-caja-natural">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Pan de Caja Con Semillas</span><span class="product-price">$145</span></div>
+        <p class="product-desc">Pan de caja de masa madre enriquecido con mezcla de semillas. Perfecto para tostadas y sandwiches.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pan%20de%20Caja%20Con%20Semillas" target="_blank" rel="noopener" id="btn-caja-semillas">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Galleta N.Y. Masa Madre</span><span class="product-price">$65 c/u</span></div>
+        <p class="product-desc">Galleta tipo New York de masa madre. Grande, suave por dentro y crujiente por fuera. Imperdible.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20una%20Galleta%20NY%20Masa%20Madre" target="_blank" rel="noopener" id="btn-galleta-mm">Pedir →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- II. PIZZAS ARTESANALES -->
+  <div class="menu-category">
+    <div class="category-header">
+      <div class="category-icon">🍕</div>
+      <div>
+        <h3>Pizzas Artesanales (Home-Bake)</h3>
+        <p>Base de masa madre · Congelada · Hornea en casa en 15 min</p>
+      </div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Base Jitomate</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Base de masa madre con salsa de jitomate artesanal. Lista para personalizar con tus ingredientes favoritos.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza%20Base%20Jitomate" target="_blank" rel="noopener" id="btn-pizza-jitomate">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Base Queso</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Base de masa madre con queso mozzarella. Sencilla, cremosa y perfecta para agregar lo que quieras.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza%20Base%20Queso" target="_blank" rel="noopener" id="btn-pizza-queso">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Base Piña con Jamón y Queso</span><span class="product-price">$150</span></div>
+        <p class="product-desc">La favorita de muchos. Base de masa madre con piña, jamón y queso fundido — sabor equilibrado y delicioso.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza%20Pi%C3%B1a%20con%20Jam%C3%B3n%20y%20Queso" target="_blank" rel="noopener" id="btn-pizza-pina">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Base Pepperoni</span><span class="product-price">$150</span></div>
+        <p class="product-desc">Base de masa madre con pepperoni generoso y queso fundido. El clásico elevado con nuestra masa artesanal.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza%20Pepperoni" target="_blank" rel="noopener" id="btn-pizza-pepperoni">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Pizza Atelier 3 Ingredientes</span><span class="product-price">$165</span></div>
+        <p class="product-desc">Crea tu pizza con 3 ingredientes a elección: jamón, tocino, piña, champiñón, jalapeño o pepperoni.</p>
+        <p class="product-variants">🎨 Elige 3: jamón · tocino · piña · champiñón · jalapeño · pepperoni</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20una%20Pizza%20Atelier%20con%203%20ingredientes" target="_blank" rel="noopener" id="btn-pizza-atelier">Pedir →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- III. REPOSTERÍA -->
+  <div class="menu-category">
+    <div class="category-header">
+      <div class="category-icon">🍰</div>
+      <div>
+        <h3>Repostería & Pastelería Artesanal</h3>
+        <p>Lista al día siguiente de tu pedido · Tamaños individuales</p>
+      </div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Trenza de Nutella 20cm</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Trenza artesanal rellena de Nutella y nuez tostada. Un capricho que vale cada bocado.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20una%20Trenza%20de%20Nutella" target="_blank" rel="noopener" id="btn-trenza">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Galleta N.Y. Nuez & Chocolate</span><span class="product-price">$55 c/u</span></div>
+        <p class="product-desc">Galleta tipo New York con nuez y chocolate amargo. Grande, suave y con una intensidad deliciosa.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta%20NY%20Nuez%20y%20Chocolate" target="_blank" rel="noopener" id="btn-galleta-nuez">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Galleta N.Y. Oreo</span><span class="product-price">$50 c/u</span></div>
+        <p class="product-desc">Galleta tipo New York con trozos de Oreo. Crujiente por fuera, suave por dentro y llena de sabor.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta%20NY%20Oreo" target="_blank" rel="noopener" id="btn-galleta-oreo">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Galleta N.Y. Clásica</span><span class="product-price">$45 c/u</span></div>
+        <p class="product-desc">La galleta New York original. Masa suave, bordes dorados y un sabor simple que enamora.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta%20NY%20Cl%C3%A1sica" target="_blank" rel="noopener" id="btn-galleta-clasica">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Pastel Tipo Alemán</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Pastel individual elaborado con coco, nuez tostada y caramelo. Un postre que habla por sí solo.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20un%20Pastel%20Tipo%20Alem%C3%A1n" target="_blank" rel="noopener" id="btn-pastel-aleman">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Pastel de Chocolate</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Pastel individual de chocolate semiamargo. Húmedo, intenso y sin apología. Para los amantes del cacao.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20un%20Pastel%20de%20Chocolate" target="_blank" rel="noopener" id="btn-pastel-chocolate">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Pastel de Vainilla</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Pastel individual con vainilla mexicana de Papantla, Veracruz. Delicado, aromático y perfectamente equilibrado.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20un%20Pastel%20de%20Vainilla" target="_blank" rel="noopener" id="btn-pastel-vainilla">Pedir →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- IV. BEBIDAS -->
+  <div class="menu-category">
+    <div class="category-header">
+      <div class="category-icon">🌿</div>
+      <div>
+        <h3>Bebidas & Elixires Funcionales</h3>
+        <p>Nutrición líquida · Lista al día siguiente</p>
+      </div>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Matcha Ceremonial 355ml</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Té verde japonés de primera cosecha, grado premium. Sabor <em>umami</em> característico, alta concentración de antioxidantes. Mezclado con agua, no infusionado.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20un%20Matcha%20Ceremonial" target="_blank" rel="noopener" id="btn-matcha">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Café Americano 355ml</span><span class="product-price">$70</span></div>
+        <p class="product-desc">La esencia de nuestra barra. Café de especialidad en formato generoso para disfrutar en casa.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20un%20Caf%C3%A9%20Americano" target="_blank" rel="noopener" id="btn-americano">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Café Espresso 25ml</span><span class="product-price">$50</span></div>
+        <p class="product-desc">Intensidad pura. Extracción concentrada de café de especialidad para los que aprecian lo esencial.</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20un%20Caf%C3%A9%20Espresso" target="_blank" rel="noopener" id="btn-espresso">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Bebida Funcional 65ml</span><span class="product-price">$65</span></div>
+        <p class="product-desc">Shots de bienestar — 5 sabores a elegir. Indícanos cuál al pedir.</p>
+        <p class="product-variants">🔥 Forte · 🥒 Digestive · 🍍 Detox · 🥕 Equilibrium · 💚 Energy</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20una%20Bebida%20Funcional%2065ml" target="_blank" rel="noopener" id="btn-bebida-funcional">Pedir →</a>
+      </div>
+      <div class="product-card">
+        <div class="product-card-top"><span class="product-name">Jugo Cold Pressed 500ml</span><span class="product-price">$100</span></div>
+        <p class="product-desc">Jugos fríos prensados — 4 variedades. Indícanos cuál al pedir.</p>
+        <p class="product-variants">🥬 Jugo Verde · 🥕 Zanahoria · 🍎 Energy · 🍍 Skinny Beach</p>
+        <a class="product-cta" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20un%20Jugo%20Cold%20Pressed" target="_blank" rel="noopener" id="btn-cold-pressed">Pedir →</a>
+      </div>
+    </div>
+    <div class="category-note">💡 Nuestro asistente de WhatsApp te preguntará qué sabor o variedad prefieres al confirmar tu pedido.</div>
+  </div>
+</section>
+
+<!-- ── CÓMO PEDIR ── -->
+<section class="como-pedir" id="como-pedir">
+  <p class="section-label">Así de fácil</p>
+  <h2>Sin apps extras. Solo tu WhatsApp.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Escríbenos por WhatsApp</h4>
+      <p>Nuestro asistente virtual te atiende 24/7. Cuéntale qué quieres — sin formatos, en lenguaje natural.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>Confirma tu pedido</h4>
+      <p>El bot arma tu carrito, calcula el costo de envío exacto a tu domicilio y genera un link de pago seguro vía Stripe.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Recibe en casa 🏠</h4>
+      <p>Tu pedido llega fresco a tu puerta. Masa madre en 2 días hábiles; repostería y bebidas al día siguiente.</p>
+    </div>
+  </div>
+  <div class="como-cta">
+    <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20un%20pedido%20ahora%20🍞" class="btn-primary" target="_blank" rel="noopener" id="btn-hero-cta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+      Empezar mi pedido ahora
+    </a>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section class="faq" id="faq">
+  <p class="section-label">FAQ</p>
+  <h2>Todo lo que necesitas saber</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">¿Dónde entregan?</div>
+      <div class="faq-a"><p>Entregamos a domicilio en toda el área metropolitana de Zapopan y Guadalajara. El costo de envío se calcula con Google Maps desde nuestra panadería (Bugambilias, Zapopan). Los primeros 4.8 km son gratuitos; después, $13 MXN por km adicional. El bot te da el costo exacto al escribir tu dirección.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Cuánto tiempo tarda mi pedido?</div>
+      <div class="faq-a"><p>Masa madre (hogazas, pan de caja, pizzas): 2 días hábiles — requieren 48 horas de fermentación. Repostería, pastelería y bebidas: listo al día siguiente de tu pedido. Si pides de ambas categorías, podemos coordinar un solo envío cuando todo esté listo — tú decides.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Cómo es el proceso de pago?</div>
+      <div class="faq-a"><p>El pago es 100% seguro vía Stripe — la misma plataforma que usan Amazon y Airbnb. El bot genera un link personalizado con el detalle de tu pedido. Aceptamos todas las tarjetas de crédito y débito.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Hay mínimo de compra?</div>
+      <div class="faq-a"><p>No hay mínimo de compra. Puedes pedir desde una sola galleta 🍪. Para domicilio, el costo del envío aplica normalmente a partir de los 4.8 km.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Cuándo atiende el bot?</div>
+      <div class="faq-a"><p>El asistente de WhatsApp recibe pedidos las 24 horas, los 7 días de la semana. Panadería Paty procesa y coordina los envíos de lunes a sábado de 7am a 3pm. Si escribes fuera de ese horario, tu pedido queda registrado y lo procesamos a partir de las 7am del siguiente día hábil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PEDIDO ESPECIAL ── -->
+<section class="pedido-especial" id="pedido-especial">
+  <p class="section-label">¿Algo especial?</p>
+  <h2>¿Va más allá del menú regular?</h2>
+  <p>Eventos, cotizaciones, volúmenes o sugerencias. Escríbenos directamente al correo y Paty te responde.</p>
+  <p style="font-size:.85rem; color: var(--text-muted); margin-bottom:1.5rem;">🤖 Para pedidos del menú usa el bot de WhatsApp — más rápido, pago seguro y registro automático.</p>
+  <a href="mailto:lamadremasasartesanales@gmail.com?subject=Pedido especial / Evento&body=Hola Paty, me gustaría cotizar:" class="btn-primary" style="display:inline-flex; background: var(--brown-mid);">
+    ✉️ Escribir a Paty
+  </a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Paty Home Bakery</h3>
+      <p>La Madre Masas Artesanales. Pan de masa madre de fermentación lenta, repostería artesanal y bebidas funcionales. Todo con amor, tiempo y sin prisa. Zapopan, Jalisco.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Menú</h4>
+      <ul>
+        <li><a href="#menu">Masa Madre</a></li>
+        <li><a href="#menu">Pizzas Artesanales</a></li>
+        <li><a href="#menu">Repostería & Pastelería</a></li>
+        <li><a href="#menu">Bebidas Funcionales</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="#">📍 Magnolias 111, Bugambilias, Zapopan</a></li>
+        <li><a href="https://wa.me/525667751226" target="_blank" rel="noopener">📱 WhatsApp: +52 1 56 6775 1226</a></li>
+        <li><a href="https://instagram.com/lamadremasasartesanales" target="_blank" rel="noopener">📸 @lamadremasasartesanales</a></li>
+        <li><a href="mailto:lamadremasasartesanales@gmail.com">✉️ Correo</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Paty Home Bakery · La Madre Masas Artesanales · Zapopan, Jalisco</span>
+    <div style="display:flex; gap:1.5rem;">
+      <a href="/privacy.html">Política de Privacidad</a>
+      <a href="/terms.html">Términos y Condiciones</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a class="wa-float" href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20un%20pedido%20🍞" target="_blank" rel="noopener" aria-label="Abrir WhatsApp" id="btn-wa-float">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/></svg>
+</a>
+
+<script>
+  // Nav toggle mobile
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
