@@ -1,0 +1,49 @@
+:root {
+    /* --- Palette "Warm Artisan" --- */
+    --color-primary: #C07848;
+    /* Burnt Orange / Crust */
+    --color-primary-light: #D49265;
+    --color-secondary: #8FBC8F;
+    /* Sage Green / Natural */
+    --color-accent: #2C3E50;
+    /* Charcoal / Modern Text */
+    --color-background: #FDFBF7;
+    /* Cream / Flour Background */
+    --color-surface: #FFFFFF;
+    --color-surface-alt: #F4F1EA;
+    /* Slightly darker cream */
+
+    --color-text-main: #2C3E50;
+    --color-text-light: #FDFBF7;
+    --color-text-muted: #8D6E63;
+
+    --color-gold: #D4AF37;
+    /* Premium Accent */
+    --color-success: #27ae60;
+    --color-error: #e74c3c;
+
+    /* --- Typography --- */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* --- Spacing & sizing --- */
+    --container-width: 1200px;
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 32px;
+    --spacing-lg: 64px;
+    --spacing-xl: 96px;
+
+    /* --- UI Elements --- */
+    --border-radius-sm: 4px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 24px;
+    --border-radius-pill: 50px;
+
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(44, 62, 80, 0.1);
+    --shadow-lg: 0 10px 25px rgba(44, 62, 80, 0.15);
+    --shadow-floating: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+    --transition-base: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
