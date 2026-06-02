@@ -1,1265 +1,291 @@
 <!DOCTYPE html>
-<html lang="es" style="scroll-behavior:smooth;">
+<html lang="es" style="scroll-behavior:smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paty Home Bakery | La Madre Masas Artesanales · Zapopan</title>
-  <meta name="description" content="Pan de masa madre fermentado 48 horas y repostería artesanal. Paty Home Bakery — La Madre Masas Artesanales. Pedidos por WhatsApp con entrega a domicilio en el Área Metropolitana de Guadalajara.">
-  <meta property="og:title" content="Paty Home Bakery | La Madre Masas Artesanales">
-  <meta property="og:description" content="Pan artesanal de fermentación lenta. Pide por WhatsApp, recibe en casa.">
-  <link rel="stylesheet" href="css/variables.css">
-  <link rel="stylesheet" href="css/style.css">
+  <title>La Madre · Masas Artesanales | Panadería Paty · Zapopan</title>
+  <meta name="description" content="Pan de masa madre, fermentación natural 48 horas. Pedidos por WhatsApp con entrega a domicilio en Zapopan y Área Metropolitana de Guadalajara.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
   <style>
-    /* ── OVERRIDES Y NUEVAS SECCIONES ─────────────────────────────────── */
-    :root {
-      --wa-green: #25D366;
-      --wa-green-dark: #128C7E;
-      --color-dark: #1a1008;
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    ::selection{background:#3d2b1f;color:#faf6f0}
+    :root{
+      --c-cream:#faf6f0;--c-warm:#f3ece2;--c-dark:#1a1208;--c-brown:#3d2b1f;
+      --c-crust:#8b6914;--c-gold:#c9a227;--c-muted:#8a7e70;--c-line:rgba(61,43,31,0.1);
+      --c-wa:#25D366;--c-wa-dark:#128C7E;
+      --font-d:'DM Serif Display',Georgia,serif;--font-b:'DM Sans',system-ui,sans-serif;
+      --ease:cubic-bezier(0.25,0.8,0.25,1);--max-w:1140px;
     }
+    body{font-family:var(--font-b);background:var(--c-cream);color:var(--c-dark);line-height:1.6;-webkit-font-smoothing:antialiased}
+    .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
 
-    /* GLOBAL: Selection styling with brand colors */
-    ::selection { background: var(--color-primary); color: var(--color-background); }
-    ::-moz-selection { background: var(--color-primary); color: var(--color-background); }
-
-    /* Scroll-triggered animation base */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
-                  transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    .fade-in-up.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* HEADER */
-    .header {
-      background: rgba(253,251,247,0.92);
-      backdrop-filter: blur(16px);
-      position: sticky; top: 0; z-index: 900;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(192,120,72,0.12);
-    }
-    .btn-wa-header {
-      background: var(--wa-green);
-      color: #fff;
-      border-radius: 50px;
-      padding: 10px 24px;
-      font-weight: 700;
-      font-size: 0.9rem;
-      display: inline-flex; align-items: center; gap: 8px;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 0 4px 14px rgba(37,211,102,0.35);
-    }
-    .btn-wa-header:hover {
-      background: var(--wa-green-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37,211,102,0.45);
-      color: #fff;
-    }
+    /* NAV */
+    .nav{position:sticky;top:0;z-index:100;background:rgba(250,246,240,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--c-line);padding:16px 0}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between}
+    .nav-brand{font-family:var(--font-d);font-size:1.3rem;color:var(--c-brown);letter-spacing:-0.5px}
+    .nav-brand small{display:block;font-family:var(--font-b);font-size:0.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--c-muted);font-weight:500}
+    .nav-links{display:flex;gap:32px;align-items:center}
+    .nav-links a{font-size:0.85rem;font-weight:500;color:var(--c-muted);transition:color 0.2s var(--ease)}
+    .nav-links a:hover{color:var(--c-brown)}
+    .btn-wa{display:inline-flex;align-items:center;gap:8px;background:var(--c-wa);color:#fff;padding:10px 24px;border-radius:50px;font-weight:600;font-size:0.85rem;box-shadow:0 4px 16px rgba(37,211,102,0.3);transition:all 0.25s var(--ease)}
+    .btn-wa:hover{background:var(--c-wa-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,0.4);color:#fff}
 
     /* HERO */
-    .hero {
-      min-height: 95vh;
-      display: flex; align-items: center;
-      position: relative;
-      background: var(--color-dark);
-      margin-top: 0; padding-top: 0;
-      overflow: hidden;
-    }
-    .hero-bg {
-      position: absolute; inset: -20% 0 0 0;
-      background-image: url('images/hero.png');
-      background-size: cover; background-position: center 30%;
-      opacity: 0.52;
-      mix-blend-mode: normal; z-index: 0;
-      will-change: transform;
-      height: 120%;
-      background-attachment: fixed;
-    }
-    @media (max-width: 768px) {
-      .hero-bg { background-attachment: scroll; }
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(180deg, rgba(26,16,8,0.82) 0%, rgba(26,16,8,0.55) 40%, rgba(192,120,72,0.22) 100%),
-        radial-gradient(ellipse at 30% 80%, rgba(192,120,72,0.18) 0%, transparent 70%);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative; z-index: 10;
-      max-width: 680px;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(212,175,55,0.18);
-      border: 1px solid rgba(212,175,55,0.4);
-      color: var(--color-gold);
-      padding: 6px 16px; border-radius: 50px;
-      font-size: 0.75rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 1.5px;
-      margin-bottom: 24px;
-    }
-    .hero-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
-    .hero-content h1 em {
-      color: var(--color-gold);
-      font-style: italic;
-    }
-    .hero-content p {
-      font-size: 1.15rem;
-      color: rgba(255,255,255,0.82);
-      max-width: 480px;
-      margin-bottom: 36px;
-      line-height: 1.7;
-    }
-    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-    .btn-wa-hero {
-      background: var(--wa-green);
-      color: #fff; border-radius: 50px;
-      padding: 16px 36px;
-      font-weight: 700; font-size: 1.05rem;
-      display: inline-flex; align-items: center; gap: 10px;
-      box-shadow: 0 8px 32px rgba(37,211,102,0.45);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      animation: cta-pulse 2.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
-    }
-    @keyframes cta-pulse {
-      0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.45); }
-      50%      { box-shadow: 0 8px 40px rgba(37,211,102,0.65), 0 0 0 6px rgba(37,211,102,0.12); }
-    }
-    .btn-wa-hero:hover {
-      background: var(--wa-green-dark);
-      animation: none;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(37,211,102,0.55);
-      color: #fff;
-    }
-    .btn-ghost {
-      color: rgba(255,255,255,0.85);
-      border: 1.5px solid rgba(255,255,255,0.35);
-      border-radius: 50px; padding: 15px 30px;
-      font-weight: 600; font-size: 1rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    .btn-ghost:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.65);
-      color: #fff;
-    }
-    .scarcity-tag {
-      margin-top: 28px;
-      display: inline-flex; align-items: center; gap: 8px;
-      color: rgba(255,255,255,0.65); font-size: 0.85rem;
-    }
-    .scarcity-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: #ff6b6b; animation: blink 1.4s infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--c-dark)}
+    .hero-bg{position:absolute;inset:0;background:url('images/hero.png') center/cover no-repeat;opacity:0.5}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,8,0.7) 0%,rgba(26,18,8,0.4) 50%,rgba(26,18,8,0.8) 100%)}
+    .hero-content{position:relative;z-index:2;max-width:640px;padding:80px 0}
+    .hero-eyebrow{font-size:0.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--c-gold);margin-bottom:24px}
+    .hero h1{font-family:var(--font-d);font-size:clamp(2.8rem,6vw,4.8rem);color:#fff;line-height:1.05;margin-bottom:24px}
+    .hero h1 em{font-style:italic;color:var(--c-gold)}
+    .hero-sub{font-size:1.1rem;color:rgba(255,255,255,0.75);max-width:440px;margin-bottom:40px;line-height:1.7}
+    .hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+    .btn-ghost{color:rgba(255,255,255,0.8);border:1.5px solid rgba(255,255,255,0.3);padding:12px 28px;border-radius:50px;font-weight:500;font-size:0.9rem;transition:all 0.25s var(--ease)}
+    .btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6);color:#fff}
 
-    /* TRUST STRIP */
-    .trust-strip {
-      background: var(--color-primary);
-      padding: 20px 0;
-    }
-    .trust-strip-inner {
-      display: flex; justify-content: space-around; align-items: center;
-      flex-wrap: wrap; gap: 16px;
-    }
-    .trust-item {
-      display: flex; align-items: center; gap: 10px;
-      color: rgba(255,255,255,0.92); font-size: 0.88rem; font-weight: 500;
-    }
-    .trust-item i { color: var(--color-gold); font-size: 1.1rem; }
-    .trust-item strong { color: #fff; font-weight: 700; }
+    /* CRAFT STRIP */
+    .craft-strip{background:var(--c-brown);padding:20px 0}
+    .craft-strip-inner{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+    .craft-item{font-size:0.8rem;color:rgba(255,255,255,0.7);font-weight:500;letter-spacing:1px}
+    .craft-item strong{color:#fff}
 
-    /* STORY SECTION */
-    .story-section { padding: 80px 0; background: var(--color-background); }
-    .story-section h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 20px; }
-    .story-section p { font-size: 1.05rem; color: var(--color-text-muted); line-height: 1.8; margin-bottom: 16px; }
-    .story-img {
-      border-radius: 20px; overflow: hidden; height: 460px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-    }
-    .story-img img { width:100%; height:100%; object-fit:cover; }
+    /* SECTIONS */
+    .section{padding:96px 0}
+    .section-label{font-size:0.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--c-crust);margin-bottom:16px}
+    .section-title{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:16px;line-height:1.15}
+    .section-desc{font-size:0.95rem;color:var(--c-muted);max-width:520px;line-height:1.7}
 
-    /* WHEAT DIVIDER */
-    .wheat-divider {
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px 0; gap: 16px;
-    }
-    .wheat-divider .line {
-      flex: 1; max-width: 120px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
-    }
-    .wheat-divider svg { opacity: 0.45; flex-shrink: 0; }
+    /* STORY */
+    .story{background:var(--c-cream)}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+    .story-img{border-radius:16px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 64px rgba(0,0,0,0.12)}
+    .story-img img{width:100%;height:100%;object-fit:cover}
 
-    /* TESTIMONIALS */
-    .testimonials-section {
-      padding: 80px 0;
-      background: linear-gradient(180deg, var(--color-surface-alt) 0%, var(--color-background) 100%);
-    }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
-      max-width: 960px; margin: 0 auto;
-    }
-    @media (max-width: 768px) {
-      .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
-    }
-    .testimonial-card {
-      background: var(--color-surface); border-radius: var(--border-radius-lg);
-      padding: 32px 28px; text-align: center;
-      box-shadow: 0 4px 20px rgba(44, 62, 80, 0.07);
-      border: 1px solid rgba(192,120,72,0.08);
-      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
-                  box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    }
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(192,120,72,0.12);
-    }
-    .testimonial-stars { color: var(--color-gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
-    .testimonial-text {
-      font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.7;
-      margin-bottom: 20px; font-style: italic;
-    }
-    .testimonial-author { font-weight: 700; color: var(--color-primary); font-size: 0.88rem; }
-    .testimonial-role { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 2px; }
+    /* MENU */
+    .menu-section{background:var(--c-warm)}
+    .menu-tabs{display:flex;gap:8px;margin-bottom:48px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+    .menu-tabs::-webkit-scrollbar{display:none}
+    .menu-tab{padding:10px 24px;border-radius:50px;font-size:0.82rem;font-weight:600;border:1.5px solid var(--c-line);color:var(--c-muted);white-space:nowrap;transition:all 0.2s var(--ease)}
+    .menu-tab:hover{border-color:var(--c-brown);color:var(--c-brown)}
+    .menu-tab.active{background:var(--c-brown);color:#fff;border-color:var(--c-brown)}
+    .menu-panel{display:none}.menu-panel.active{display:block}
+    .menu-panel-head{margin-bottom:32px}
+    .menu-panel-head h3{font-family:var(--font-d);font-size:1.5rem;margin-bottom:4px}
+    .menu-panel-head p{font-size:0.85rem;color:var(--c-muted)}
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+    .product-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--c-line);transition:transform 0.25s var(--ease),box-shadow 0.25s var(--ease)}
+    .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.1)}
+    .product-card-img{aspect-ratio:4/3;overflow:hidden}
+    .product-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s var(--ease)}
+    .product-card:hover .product-card-img img{transform:scale(1.06)}
+    .product-card-body{padding:20px}
+    .product-name{font-family:var(--font-d);font-size:1.05rem;margin-bottom:6px}
+    .product-desc{font-size:0.82rem;color:var(--c-muted);line-height:1.5;margin-bottom:16px}
+    .product-footer{display:flex;justify-content:space-between;align-items:center}
+    .product-price{font-weight:800;font-size:1.1rem;color:var(--c-brown)}
+    .product-price span{font-size:0.72rem;font-weight:500;color:var(--c-muted)}
+    .btn-pedir{display:inline-flex;align-items:center;gap:6px;background:var(--c-wa);color:#fff;padding:8px 18px;border-radius:50px;font-size:0.78rem;font-weight:600;transition:all 0.2s var(--ease)}
+    .btn-pedir:hover{background:var(--c-wa-dark);transform:translateY(-1px);color:#fff}
+    .badge-fav{display:inline-block;font-size:0.65rem;font-weight:700;background:rgba(201,162,39,0.12);color:var(--c-crust);padding:3px 10px;border-radius:50px;margin-bottom:4px}
+    .badge-new{display:inline-block;font-size:0.65rem;font-weight:700;background:rgba(37,211,102,0.1);color:var(--c-wa-dark);padding:3px 10px;border-radius:50px;margin-bottom:4px}
+    .menu-cta{text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--c-line)}
+    .menu-cta p{font-size:0.8rem;color:var(--c-muted);margin-top:12px}
 
-    /* MENU SECTION */
-    .menu-section { background: var(--color-surface-alt); padding: 80px 0; }
-    .section-header { text-align: center; margin-bottom: 56px; }
-    .section-header .eyebrow {
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
-      text-transform: uppercase; color: var(--color-primary);
-      background: rgba(192,120,72,0.1); padding: 6px 16px;
-      border-radius: 50px; display: inline-block; margin-bottom: 14px;
-    }
-    .section-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 12px; }
-    .section-header p { color: var(--color-text-muted); font-size: 1rem; max-width: 560px; margin: 0 auto; }
-
-    /* Menu Category */
-    .menu-category-block { margin-bottom: 64px; }
-    .menu-category-block:last-child { margin-bottom: 0; }
-    .menu-cat-header {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 24px; padding-bottom: 14px;
-      border-bottom: 2px solid rgba(192,120,72,0.15);
-    }
-    .menu-cat-header h3 { font-size: 1.5rem; margin: 0; }
-    .menu-cat-icon { font-size: 1.6rem; }
-
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; }
-    .menu-card {
-      background: #fff; border-radius: 14px;
-      padding: 20px 18px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-      border: 1px solid rgba(192,120,72,0.08);
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .menu-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(192,120,72,0.15);
-      border-color: rgba(192,120,72,0.25);
-    }
-    .menu-card-name { font-weight: 700; color: var(--color-primary); font-size: 0.95rem; margin-bottom: 4px; font-family: 'Playfair Display', serif; }
-    .menu-card-desc { font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 12px; line-height: 1.5; }
-    .menu-card-price { font-weight: 800; color: var(--color-accent); font-size: 1.1rem; }
-    .menu-card-price span { font-size: 0.75rem; font-weight: 500; color: var(--color-text-muted); }
-
-    .menu-cta-block { text-align: center; margin-top: 40px; }
-    .btn-wa-menu {
-      background: var(--wa-green); color: #fff;
-      border-radius: 50px; padding: 14px 36px;
-      font-weight: 700; font-size: 1rem;
-      display: inline-flex; align-items: center; gap: 10px;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.38);
-      transition: all 0.3s ease;
-    }
-    .btn-wa-menu:hover { background: var(--wa-green-dark); transform: translateY(-2px); color: #fff; }
-
-    /* HOW TO ORDER */
-    .how-section { padding: 80px 0; background: var(--color-primary); }
-    .how-section .section-header .eyebrow { color: var(--color-gold); background: rgba(212,175,55,0.15); }
-    .how-section .section-header h2 { color: #fff; }
-    .how-section .section-header p { color: rgba(255,255,255,0.75); }
-    .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 48px; }
-    .step-card {
-      text-align: center; padding: 36px 24px;
-      background: rgba(255,255,255,0.08); border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.12);
-      transition: all 0.3s ease;
-    }
-    .step-card:hover { background: rgba(255,255,255,0.14); transform: translateY(-4px); }
-    .step-number {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--color-gold); color: var(--color-dark);
-      font-weight: 800; font-size: 1.3rem;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px;
-    }
-    .step-card h4 { color: #fff; font-size: 1.1rem; margin-bottom: 10px; }
-    .step-card p { color: rgba(255,255,255,0.72); font-size: 0.9rem; line-height: 1.6; }
-    .step-arrow { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.3); font-size: 1.5rem; }
+    /* HOW */
+    .how-section{background:var(--c-brown);color:#fff}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+    .step-card{text-align:center;padding:32px 20px;background:rgba(255,255,255,0.06);border-radius:16px;border:1px solid rgba(255,255,255,0.08);transition:all 0.25s var(--ease)}
+    .step-card:hover{background:rgba(255,255,255,0.1);transform:translateY(-3px)}
+    .step-num{width:48px;height:48px;border-radius:50%;background:var(--c-gold);color:var(--c-dark);font-weight:800;font-size:1.1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+    .step-card h4{font-size:1rem;margin-bottom:8px}
+    .step-card p{font-size:0.85rem;color:rgba(255,255,255,0.65);line-height:1.6}
 
     /* FAQ */
-    .faq-section { padding: 80px 0; background: var(--color-background); }
-    .faq-container { max-width: 760px; margin: 0 auto; }
-    details {
-      background: #fff; border-radius: 12px;
-      margin-bottom: 10px; overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border: 1px solid rgba(192,120,72,0.1);
-    }
-    details[open] { border-color: rgba(192,120,72,0.3); }
-    summary {
-      padding: 18px 20px; font-weight: 600;
-      color: var(--color-primary); cursor: pointer;
-      list-style: none; display: flex;
-      justify-content: space-between; align-items: center;
-      font-size: 0.97rem;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: '+'; font-size: 1.3rem; color: var(--color-primary); transition: transform 0.3s; }
-    details[open] summary::after { content: '−'; }
-    details p { padding: 0 20px 18px; color: var(--color-text-muted); line-height: 1.7; font-size: 0.95rem; }
+    .faq-section{background:var(--c-cream)}
+    .faq-container{max-width:700px;margin:0 auto}
+    details{background:#fff;border-radius:12px;margin-bottom:8px;border:1px solid var(--c-line);overflow:hidden}
+    details[open]{border-color:rgba(61,43,31,0.2)}
+    summary{padding:18px 24px;font-weight:600;font-size:0.95rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:'+';font-size:1.2rem;color:var(--c-muted);transition:transform 0.2s var(--ease)}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{padding:0 24px 18px;font-size:0.88rem;color:var(--c-muted);line-height:1.7}
 
     /* FOOTER */
-    footer {
-      background: var(--color-dark);
-      color: rgba(255,255,255,0.75);
-      padding: 60px 0 30px;
-    }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-    .footer-brand h3 { color: var(--color-gold); font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 12px; }
-    .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px; }
-    .footer-wa-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--wa-green); color: #fff;
-      border-radius: 50px; padding: 10px 22px;
-      font-weight: 600; font-size: 0.88rem;
-      transition: all 0.3s ease;
-    }
-    .footer-wa-btn:hover { background: var(--wa-green-dark); color: #fff; transform: translateY(-2px); }
-    .footer-col h4 { color: #fff; font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 0.5px; }
-    .footer-col ul { list-style: none; padding: 0; }
-    .footer-col ul li { margin-bottom: 8px; font-size: 0.87rem; }
-    .footer-col ul li a { color: rgba(255,255,255,0.65); transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--color-gold); }
-    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
-    .footer-social a {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255,255,255,0.08);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.7); font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-    .footer-social a:hover { background: var(--color-primary); color: #fff; transform: scale(1.1); }
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 24px; text-align: center;
-      font-size: 0.82rem; color: rgba(255,255,255,0.4);
-    }
+    .footer{background:var(--c-dark);color:rgba(255,255,255,0.5);padding:48px 0 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+    .footer h4{color:#fff;font-size:0.9rem;margin-bottom:16px}
+    .footer p,.footer a{font-size:0.82rem;line-height:1.8}
+    .footer a:hover{color:rgba(255,255,255,0.8)}
+    .footer-brand{font-family:var(--font-d);font-size:1.2rem;color:#fff;margin-bottom:12px}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:0.72rem}
 
-    /* FLOATING WA BUTTON */
-    .wa-float {
-      position: fixed; bottom: 28px; right: 28px; z-index: 9999;
-    }
-    .wa-float a {
-      width: 62px; height: 62px; border-radius: 50%;
-      background: var(--wa-green);
-      will-change: transform;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 1.8rem;
-      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
-      animation: wa-pulse 2.5s infinite;
-      transition: transform 0.2s ease;
-    }
-    .wa-float a:hover { transform: scale(1.1); animation: none; }
-    .wa-float-tooltip {
-      position: absolute; right: 74px; top: 50%;
-      transform: translateY(-50%);
-      background: #fff; color: var(--color-dark);
-      padding: 8px 14px; border-radius: 10px;
-      font-size: 0.82rem; font-weight: 600; white-space: nowrap;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-      opacity: 0; transition: opacity 0.3s;
-      pointer-events: none;
-    }
-    .wa-float:hover .wa-float-tooltip { opacity: 1; }
-    @keyframes wa-pulse {
-      0%   { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
-      70%  { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
-      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-    }
+    /* WA FLOAT */
+    .wa-float{position:fixed;bottom:24px;right:24px;z-index:90;width:56px;height:56px;border-radius:50%;background:var(--c-wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,0.4);transition:all 0.25s var(--ease);font-size:28px}
+    .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,0.5)}
 
     /* RESPONSIVE */
-    @media(max-width:900px) {
-      .steps-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-      .hero-content h1 { font-size: 2.4rem; }
-      .trust-strip-inner { flex-direction: column; gap: 12px; }
-      .menu-grid { grid-template-columns: 1fr 1fr; }
+    @media(max-width:768px){
+      .nav-links a:not(.btn-wa){display:none}
+      .hero h1{font-size:2.4rem}
+      .story-grid{grid-template-columns:1fr;gap:32px}
+      .story-img{aspect-ratio:16/10}
+      .product-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      .steps-grid{grid-template-columns:1fr;gap:16px}
+      .footer-grid{grid-template-columns:1fr;gap:24px}
+      .craft-strip-inner{gap:24px;justify-content:flex-start}
     }
-    @media(max-width:768px) {
-      .carousel-scroll { grid-template-columns: 1fr 1fr; }
-      .story-section .grid-2-col { grid-template-columns: 1fr; }
-      .story-img { height: 300px; }
-      .menu-tabs {
-        flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
-        -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory;
-        padding-bottom: 8px; gap: 8px;
-      }
-      .menu-tabs::-webkit-scrollbar { display: none; }
-      .menu-tab { flex-shrink: 0; scroll-snap-align: start; }
-    }
-    @media(max-width:540px) {
-      .menu-grid { grid-template-columns: 1fr; }
-      .hero-ctas { flex-direction: column; }
-      .carousel-scroll { grid-template-columns: 1fr; }
-    }
-
-    /* ── MENU CAROUSEL (nuevo) ───────────────────────── */
-    .menu-tabs { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
-    .menu-tab {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 22px; border-radius:50px; border:1.5px solid rgba(192,120,72,0.3);
-      background:#fff; color:var(--color-text-muted); font-weight:600;
-      font-size:0.9rem; cursor:pointer; transition:all .25s cubic-bezier(0.25, 0.8, 0.25, 1); font-family:inherit;
-    }
-    .menu-tab svg { transition:all .25s; }
-    .menu-tab:hover { border-color:var(--color-primary); color:var(--color-primary); background:rgba(192,120,72,0.04); }
-    .menu-tab.active { background:var(--color-primary); color:#fff; border-color:var(--color-primary); }
-    .menu-tab.active svg path, .menu-tab.active svg circle, .menu-tab.active svg rect,
-    .menu-tab.active svg line, .menu-tab.active svg ellipse { stroke:#fff; }
-    .menu-panel { display:none; }
-    .menu-panel.active { display:block; }
-    .menu-panel-header { margin-bottom:28px; display:flex; align-items:center; gap:14px; padding-bottom:16px; border-bottom:2px solid rgba(192,120,72,0.12); }
-    .menu-panel-header h3 { font-size:1.4rem; margin:0; }
-    .menu-panel-header p { margin:4px 0 0; font-size:0.84rem; color:var(--color-text-muted); }
-    .carousel-scroll {
-      display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:20px;
-    }
-    @media(max-width:600px) {
-      .carousel-scroll { display:flex; overflow-x:auto; gap:16px; padding-bottom:12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
-      .carousel-scroll::-webkit-scrollbar { display:none; }
-    }
-    .product-card {
-      background:#fff; border-radius:18px; overflow:hidden;
-      box-shadow:0 3px 16px rgba(0,0,0,0.07); border:1px solid rgba(192,120,72,0.08);
-      transition:all .3s cubic-bezier(0.25, 0.8, 0.25, 1); flex-shrink:0;
-    }
-    @media(max-width:600px) { .product-card { min-width:220px; scroll-snap-align:start; } }
-    .product-card:hover { transform:translateY(-5px); box-shadow:0 12px 36px rgba(192,120,72,0.16); border-color:rgba(192,120,72,0.22); }
-    .product-img { height:180px; overflow:hidden; background:#f5f0eb; position:relative; }
-    .product-img img { width:100%; height:100%; object-fit:cover; transition:transform .3s cubic-bezier(0.25, 0.8, 0.25, 1); will-change:transform; }
-    .product-card:hover .product-img img { transform:scale(1.05); }
-    .product-img::after {
-      content:''; position:absolute; bottom:0; left:0; right:0; height:40%;
-      background:linear-gradient(to top, rgba(0,0,0,0.15), transparent);
-      pointer-events:none; z-index:1;
-    }
-    .product-info { padding:16px 18px 18px; }
-    .product-name { font-family:'Playfair Display',serif; font-weight:700; color:var(--color-primary); font-size:1rem; margin-bottom:5px; }
-    .product-desc { font-size:0.8rem; color:var(--color-text-muted); line-height:1.5; margin-bottom:14px; }
-    .product-footer { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-    .product-price { font-weight:800; color:var(--color-accent,#be7844); font-size:1.05rem; }
-    .product-price span { font-size:0.72rem; font-weight:500; color:var(--color-text-muted); }
-    .btn-pedir {
-      background:var(--wa-green); color:#fff; border-radius:50px;
-      padding:8px 18px; font-size:0.8rem; font-weight:700;
-      white-space:nowrap; transition:all .25s cubic-bezier(0.25, 0.8, 0.25, 1); text-decoration:none;
-      box-shadow:0 3px 12px rgba(37,211,102,0.3);
-      display:inline-flex; align-items:center; gap:4px;
-    }
-    .btn-pedir:hover { background:var(--wa-green-dark); color:#fff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(37,211,102,0.4); }
-    .badge-fav {
-      display:inline-block; background:var(--color-primary); color:#fff;
-      font-size:0.6rem; font-weight:700; letter-spacing:1px; padding:2px 8px;
-      border-radius:50px; text-transform:uppercase; margin-bottom:6px;
+    @media(max-width:480px){
+      .product-grid{grid-template-columns:1fr}
+      .hero-content{padding:48px 0}
     }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ────────────────────────────────────── -->
-<header class="header">
-  <div class="container flex justify-between items-center">
-    <a href="#" class="logo-text" style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--color-primary);line-height:1.1;">
-      Paty Home Bakery<br>
-      <span style="font-size:0.65rem;font-weight:500;color:var(--color-text-muted);letter-spacing:1.5px;text-transform:uppercase;font-family:'Inter',sans-serif;">La Madre Masas Artesanales</span>
-    </a>
-    <nav class="nav hidden-mobile">
-      <ul class="flex gap-md items-center">
-        <li><a href="#historia" class="nav-link">Nuestra Historia</a></li>
-        <li><a href="#menu" class="nav-link">Menú</a></li>
-        <li><a href="#como-pedir" class="nav-link">Cómo Pedir</a></li>
-        <li><a href="#faq" class="nav-link">FAQ</a></li>
-      </ul>
-    </nav>
-    <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20un%20pedido%20🍞" target="_blank" class="btn-wa-header">
-      <i class="fa-brands fa-whatsapp"></i> Pedir Ahora
-    </a>
+<nav class="nav"><div class="container nav-inner">
+  <div class="nav-brand">La Madre<small>Masas Artesanales</small></div>
+  <div class="nav-links">
+    <a href="#historia">Nuestra Historia</a><a href="#menu">Menu</a><a href="#como-pedir">Como Pedir</a><a href="#faq">FAQ</a>
+    <a href="https://wa.me/525667751226?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="btn-wa">Pedir Ahora</a>
   </div>
-</header>
+</div></nav>
 
-<!-- ── HERO ──────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-bg"></div><div class="hero-overlay"></div>
   <div class="container hero-content">
-    <div class="hero-badge">
-      <span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--color-gold);display:inline-block;"></span>
-      Fermentación natural · 48 horas de proceso
-    </div>
-    <h1>El buen pan<br>no tiene <em>prisa</em>.</h1>
-    <p>Masa madre de fermentación lenta, repostería artesanal y bebidas funcionales. Todo elaborado a pedido — para tu mesa y tu bienestar.</p>
+    <div class="hero-eyebrow">Fermentacion Natural &middot; 48 Horas</div>
+    <h1>Pan con <em>alma,</em><br>hecho con <em>tiempo.</em></h1>
+    <p class="hero-sub">Masa madre artesanal fermentada 48 horas. Sin aditivos, sin prisa. Pedidos por WhatsApp con entrega a domicilio en Zapopan y el Area Metropolitana de Guadalajara.</p>
     <div class="hero-ctas">
-      <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20mi%20pedido%20🍞" target="_blank" class="btn-wa-hero">
-        <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i>
-        Hacer mi pedido por WhatsApp
-      </a>
-      <a href="#menu" class="btn-ghost">Ver el Menú</a>
-    </div>
-    <div class="scarcity-tag">
-      <span class="dot"></span>
-      Pedimos hoy, horneamos mañana, entregas en 2 días 🍞
+      <a href="https://wa.me/525667751226?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="btn-wa">Hacer mi pedido</a>
+      <a href="#menu" class="btn-ghost">Ver el menu &darr;</a>
     </div>
   </div>
 </section>
 
-<!-- ── TRUST STRIP ───────────────────────────────── -->
-<div class="trust-strip">
-  <div class="container trust-strip-inner">
-    <div class="trust-item"><i class="fa-solid fa-seedling"></i><span><strong>15+ años</strong> de masa madre artesanal</span></div>
-    <div class="trust-item"><i class="fa-solid fa-heart"></i><span><strong>+500</strong> familias satisfechas</span></div>
-    <div class="trust-item"><i class="fa-solid fa-clock"></i><span>Fermentación natural <strong>48 horas</strong></span></div>
-    <div class="trust-item"><i class="fa-solid fa-motorcycle"></i><span>Entregas a domicilio en el <strong>AMG</strong></span></div>
-    <div class="trust-item"><i class="fa-brands fa-whatsapp"></i><span>Pedidos <strong>24/7</strong> por WhatsApp</span></div>
+<div class="craft-strip"><div class="container craft-strip-inner">
+  <span class="craft-item">Fermentacion natural <strong>48h</strong></span>
+  <span class="craft-item">Entrega a domicilio &middot; <strong>AMG</strong></span>
+  <span class="craft-item">Pedidos <strong>por WhatsApp</strong></span>
+  <span class="craft-item"><strong>Sin</strong> conservadores</span>
+</div></div>
+
+<section id="historia" class="section story"><div class="container story-grid">
+  <div>
+    <div class="section-label">Nuestra Historia</div>
+    <h2 class="section-title">El arte de la fermentacion lenta</h2>
+    <p class="section-desc" style="margin-bottom:20px">Panaderia Paty nacio de una pasion por el pan artesanal y el respeto por el proceso. Cada hogaza fermenta durante 48 horas &mdash; sin atajos, sin aditivos &mdash; para lograr esa corteza crujiente y el interior suave que solo el tiempo puede dar.</p>
+    <p class="section-desc" style="margin-bottom:28px">Horneamos a pedido desde Zapopan. Cada pieza se elabora con ingredientes seleccionados y se entrega fresca a tu puerta.</p>
+    <a href="https://wa.me/525667751226?text=Hola%2C%20me%20interesa%20conocer%20mas" target="_blank" class="btn-wa" style="display:inline-flex">Platicar con Paty</a>
   </div>
-</div>
+  <div class="story-img"><img src="images/hogaza-datil-nuez.png" alt="Hogaza artesanal de masa madre" loading="lazy"></div>
+</div></section>
 
-<!-- ── HISTORIA ──────────────────────────────────── -->
-<section id="historia" class="story-section">
-  <div class="container grid grid-2-col gap-lg items-center">
-    <div>
-      <div class="section-header" style="text-align:left;margin-bottom:28px;">
-        <div class="eyebrow" style="background:rgba(192,120,72,0.1);color:var(--color-primary);padding:6px 16px;border-radius:50px;font-size:0.72rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;display:inline-block;margin-bottom:14px;">Nuestra Historia</div>
-        <h2 style="margin-bottom:0;">El Arte<br>de la Paciencia</h2>
-      </div>
-      <p>Hace 15 años descubrí que el pan artesanal no es solo comida: es un acto de amor y respeto por el tiempo. Hoy, Panadería Paty es mi misión y mi forma de llevar a tu mesa un pan que respira, que fermenta y que tiene alma.</p>
-      <p>Nuestro pan de masa madre fermenta durante <strong>48 horas</strong> para lograr esa corteza crujiente, el interior suave y el sabor inconfundible que solo el tiempo puede dar. Nada de aditivos. Nada de prisa.</p>
-      <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20me%20interesa%20conocer%20más%20de%20sus%20productos" target="_blank" class="btn-wa-menu" style="margin-top:8px;text-decoration:none;">
-        <i class="fa-brands fa-whatsapp"></i> Platicar con Paty
-      </a>
-    </div>
-    <div class="story-img">
-      <img src="images/hogaza-natural.png" alt="Pan artesanal de masa madre Panadería Paty" loading="lazy">
-    </div>
+<section id="menu" class="section menu-section"><div class="container">
+  <div class="section-label">Menu Artesanal</div>
+  <h2 class="section-title">Nuestra Carta</h2>
+  <p class="section-desc" style="margin-bottom:40px">Todo se elabora a pedido con masa madre de fermentacion natural. Escribenos por WhatsApp y te confirmamos disponibilidad.</p>
+
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="showTab('masa-madre',this)">Masa Madre</button>
+    <button class="menu-tab" onclick="showTab('pizzas',this)">Pizzas</button>
+    <button class="menu-tab" onclick="showTab('reposteria',this)">Reposteria</button>
+    <button class="menu-tab" onclick="showTab('bebidas',this)">Bebidas</button>
   </div>
-</section>
 
-<!-- ── WHEAT DIVIDER ────────────────────────────────── -->
-<div class="wheat-divider">
-  <span class="line"></span>
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-    <path d="M24 4v40" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round"/>
-    <path d="M24 12c-4-3-8-2-10 0 4-1 7 1 10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M24 12c4-3 8-2 10 0-4-1-7 1-10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M24 20c-5-3-9-2-11 0 5-1 8 1 11 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M24 20c5-3 9-2 11 0-5-1-8 1-11 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M24 28c-4-3-8-2-10 0 4-1 7 1 10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M24 28c4-3 8-2 10 0-4-1-7 1-10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <span class="line"></span>
-</div>
-
-<!-- ── TESTIMONIOS ────────────────────────────────── -->
-<section class="testimonials-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">Lo que dicen nuestros clientes</div>
-      <h2>Familias que ya confían en Paty</h2>
-      <p>Más de 500 familias en Guadalajara eligen nuestro pan cada semana.</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card fade-in-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Desde que probamos la hogaza de dátil y nuez no compramos pan en otro lado. La corteza crujiente y el sabor de la fermentación lenta son incomparables. ¡Mis hijos la piden todos los fines!"</p>
-        <div class="testimonial-author">Mariana Rodríguez</div>
-        <div class="testimonial-role">Mamá de 3, Providencia</div>
-      </div>
-      <div class="testimonial-card fade-in-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"El servicio por WhatsApp es increíblemente cómodo. Pides hoy y en dos días tienes pan recién horneado en tu puerta. La calidad se siente en cada rebanada — no hay comparación."</p>
-        <div class="testimonial-author">Carlos Mendoza</div>
-        <div class="testimonial-role">Chef aficionado, Zapopan</div>
-      </div>
-      <div class="testimonial-card fade-in-up">
-        <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Las galletas N.Y. son las mejores que he probado en Guadalajara. Se nota que todo es artesanal y hecho con cariño. Paty siempre responde rápido y el pan llega perfecto."</p>
-        <div class="testimonial-author">Sofía Hernández</div>
-        <div class="testimonial-role">Clienta frecuente, Chapalita</div>
-      </div>
+  <div id="tab-masa-madre" class="menu-panel active">
+    <div class="menu-panel-head"><h3>Especialidades de Masa Madre</h3><p>Fermentacion natural 48h &middot; Entrega en 2 dias habiles</p></div>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="images/hogaza-datil-nuez.png" alt="Hogaza Natural" loading="lazy"></div><div class="product-card-body"><div class="product-name">Hogaza Natural</div><div class="product-desc">Pan de campana artesanal. Corteza crujiente, miga abierta y sabor inconfundible.</div><div class="product-footer"><div class="product-price">$85 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Hogaza+Natural" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/hogaza-datil-nuez.png" alt="Hogaza Con Semillas" loading="lazy"></div><div class="product-card-body"><div class="product-name">Hogaza Con Semillas</div><div class="product-desc">Mix de semillas seleccionadas integradas en masa madre fermentada.</div><div class="product-footer"><div class="product-price">$95 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Hogaza+Semillas" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/hogaza-datil-nuez.png" alt="Hogaza Datil y Nuez" loading="lazy"></div><div class="product-card-body"><div class="badge-fav">Favorita</div><div class="product-name">Hogaza Datil &amp; Nuez</div><div class="product-desc">Frutos secos y datiles en cada rebanada. Irresistible.</div><div class="product-footer"><div class="product-price">$160 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Hogaza+Datil+Nuez" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/pan-caja.png" alt="Pan de Caja Natural" loading="lazy"></div><div class="product-card-body"><div class="product-name">Pan de Caja Natural</div><div class="product-desc">Pan de caja de masa madre, sin conservadores.</div><div class="product-footer"><div class="product-price">$120 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pan+Caja+Natural" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/pan-caja.png" alt="Pan de Caja Con Semillas" loading="lazy"></div><div class="product-card-body"><div class="product-name">Pan de Caja Con Semillas</div><div class="product-desc">Pan de caja con semillas horneadas en la corteza y la masa.</div><div class="product-footer"><div class="product-price">$130 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pan+Caja+Semillas" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
     </div>
   </div>
-</section>
 
-<!-- ── MENÚ (carrusel interactivo) ──────────────────── -->
-<section id="menu" class="menu-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">Menú Artesanal</div>
-      <h2>Nuestra Carta</h2>
-      <p>Todo se elabora a pedido. Toca el producto que te antoja y escríbenos por WhatsApp — te decimos exactamente cuándo está listo.</p>
-    </div>
-
-    <!-- Tabs -->
-    <div class="menu-tabs">
-      <button class="menu-tab active" onclick="showTab('masa-madre',this)"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="18" rx="12" ry="7" stroke="#C07848" stroke-width="2"/><path d="M9 18 Q11 10 16 10 Q21 10 23 18" stroke="#C07848" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M13 18 Q14 14 16 14 Q18 14 19 18" stroke="#C07848" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg> Masa Madre</button>
-      <button class="menu-tab" onclick="showTab('pizzas',this)"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M16 4L4 27h24L16 4z" stroke="#C07848" stroke-width="2" stroke-linejoin="round"/><circle cx="16" cy="19" r="2.2" fill="#C07848"/><circle cx="12" cy="23" r="1.5" fill="#C07848"/><circle cx="20" cy="23" r="1.5" fill="#C07848"/></svg> Pizzas</button>
-      <button class="menu-tab" onclick="showTab('reposteria',this)"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect x="5" y="13" width="22" height="6" rx="3" stroke="#C07848" stroke-width="2"/><line x1="3" y1="10" x2="7" y2="22" stroke="#C07848" stroke-width="2" stroke-linecap="round"/><line x1="29" y1="10" x2="25" y2="22" stroke="#C07848" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="16" x2="23" y2="16" stroke="#C07848" stroke-width="1" stroke-dasharray="2 2"/></svg> Repostería</button>
-      <button class="menu-tab" onclick="showTab('bebidas',this)"><svg width="22" height="22" viewBox="0 0 32 32" fill="none"><path d="M10 6h12l-2 20H12L10 6z" stroke="#C07848" stroke-width="2" stroke-linejoin="round"/><path d="M8 6h16" stroke="#C07848" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="16" r="3" stroke="#C07848" stroke-width="1.5" fill="none"/></svg> Bebidas</button>
-    </div>
-
-    <!-- Panel: Masa Madre -->
-    <div id="tab-masa-madre" class="menu-panel active">
-      <div class="menu-panel-header">
-        <div>
-          <h3>Especialidades de Masa Madre</h3>
-          <p>Fermentación natural 48h · Entrega en 2 días hábiles</p>
-        </div>
-      </div>
-      <div class="carousel-scroll">
-        <div class="product-card">
-          <div class="product-img"><img src="images/hogaza-natural.png" alt="Hogaza Natural" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Hogaza Natural</div>
-            <div class="product-desc">Pan de campaña artesanal. Corteza crujiente, miga abierta y sabor inconfundible.</div>
-            <div class="product-footer">
-              <div class="product-price">$85 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Hogaza+Natural+Masa+Madre" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/hogaza-datil-nuez.png" alt="Hogaza Con Semillas" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Hogaza Con Semillas</div>
-            <div class="product-desc">Mix de semillas seleccionadas integradas en masa madre fermentada.</div>
-            <div class="product-footer">
-              <div class="product-price">$95 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Hogaza+Con+Semillas" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/hogaza-datil-nuez.png" alt="Hogaza Dátil &amp; Nuez" loading="lazy"></div>
-          <div class="product-info">
-            <div class="badge-fav">⭐ Favorita</div><div class="product-name">Hogaza Dátil &amp; Nuez</div>
-            <div class="product-desc">La favorita. Frutos secos y dátiles en cada rebanada, irresistible.</div>
-            <div class="product-footer">
-              <div class="product-price">$160 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Hogaza+Datil+Nuez" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/pan-caja.png" alt="Pan de Caja Natural" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Pan de Caja Natural</div>
-            <div class="product-desc">Pan de caja artesanal de masa madre, sin conservadores.</div>
-            <div class="product-footer">
-              <div class="product-price">$120 <span>MXN pieza</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pan+de+Caja+Natural" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/pan-caja.png" alt="Pan de Caja Con Semillas" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Pan de Caja Con Semillas</div>
-            <div class="product-desc">Versión con semillas para mayor nutrición y sabor.</div>
-            <div class="product-footer">
-              <div class="product-price">$145 <span>MXN pieza</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pan+de+Caja+Semillas" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/galleta-ny.png" alt="Galleta N.Y. Masa Madre" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Galleta N.Y. Masa Madre</div>
-            <div class="product-desc">Cookie estilo Nueva York con fermento natural. Grande, suave y crujiente.</div>
-            <div class="product-footer">
-              <div class="product-price">$65 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta+NY+Masa+Madre" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel: Pizzas -->
-    <div id="tab-pizzas" class="menu-panel">
-      <div class="menu-panel-header">
-        <div>
-          <h3>Pizzas Artesanales (Home-Bake)</h3>
-          <p>Base de masa madre · Congelada · Hornea en casa en 15 min</p>
-        </div>
-      </div>
-      <div class="carousel-scroll">
-        <div class="product-card">
-          <div class="product-img"><img src="images/pizza-artesanal-new.png" alt="Base Jitomate" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Base Jitomate</div>
-            <div class="product-desc">Salsa de tomate artesanal sobre masa madre crujiente, lista para hornear.</div>
-            <div class="product-footer">
-              <div class="product-price">$100 <span>MXN </span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Base+Jitomate" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/pizza-artesanal-new.png" alt="Base Queso" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Base Queso</div>
-            <div class="product-desc">Mozzarella generosa sobre masa madre. Directo del congelador al horno.</div>
-            <div class="product-footer">
-              <div class="product-price">$100 <span>MXN </span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Base+Queso" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/pizza-artesanal-new.png" alt="Piña &amp; Jamón" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Piña &amp; Jamón</div>
-            <div class="product-desc">El clásico favorito sobre base de fermentación lenta de 48 horas.</div>
-            <div class="product-footer">
-              <div class="product-price">$150 <span>MXN </span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Pina+Jamon" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/pizza-artesanal-new.png" alt="Pepperoni" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Pepperoni</div>
-            <div class="product-desc">Pepperoni premium sobre masa madre artesanal. Rústica y sabrosa.</div>
-            <div class="product-footer">
-              <div class="product-price">$150 <span>MXN </span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Pepperoni" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/pizza-artesanal-new.png" alt="Pizza Atelier" loading="lazy"></div>
-          <div class="product-info">
-            <div class="badge-fav">⭐ Favorita</div><div class="product-name">Pizza Atelier</div>
-            <div class="product-desc">Elige 3 ingredientes: pepperoni, jamón, tocino, piña, champiñones, aceitunas, pimiento, cebolla o jalapeño.</div>
-            <div class="product-footer">
-              <div class="product-price">$165 <span>MXN </span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20+Pizza+Atelier" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel: Repostería -->
-    <div id="tab-reposteria" class="menu-panel">
-      <div class="menu-panel-header">
-        <div>
-          <h3>Repostería &amp; Galletas Artesanales</h3>
-          <p>Galletas estilo Nueva York y trenza de Nutella · Entrega en 2 días hábiles</p>
-        </div>
-      </div>
-      <div class="carousel-scroll">
-        <div class="product-card">
-          <div class="product-img"><img src="images/trenza-nutella-new.png" alt="Trenza de Nutella" loading="lazy"></div>
-          <div class="product-info">
-            <div class="badge-fav">⭐ Favorita</div><div class="product-name">Trenza de Nutella</div>
-            <div class="product-desc">Trenza artesanal rellena de Nutella, 20cm de pura felicidad.</div>
-            <div class="product-footer">
-              <div class="product-price">$100 <span>MXN </span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Trenza+de+Nutella" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/galleta-ny.png" alt="Galleta Clásica N.Y." loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Galleta Clásica N.Y.</div>
-            <div class="product-desc">Estilo Nueva York: crujiente por fuera, suave y chocolatosa por dentro.</div>
-            <div class="product-footer">
-              <div class="product-price">$45 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta+NY+Cl%C3%A1sica" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/galleta-oreo.png" alt="Galleta Oreo" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Galleta Oreo</div>
-            <div class="product-desc">Masa artesanal con trozos de Oreo integrados. Irresistible.</div>
-            <div class="product-footer">
-              <div class="product-price">$50 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta+NY+Oreo" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/galleta-ny.png" alt="Galleta Nuez &amp; Chocolate" loading="lazy"></div>
-          <div class="product-info">
-            <div class="product-name">Galleta Nuez &amp; Chocolate</div>
-            <div class="product-desc">Nuez tostada y chocolate semi-amargo en masa artesanal.</div>
-            <div class="product-footer">
-              <div class="product-price">$55 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta+Nuez+Chocolate" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/crookie.png" alt="Crookie" loading="lazy"></div>
-          <div class="product-info">
-            <div class="badge-new">🆕 Nuevo</div><div class="product-name">Crookie</div>
-            <div class="product-desc">Croissant + Cookie: capas hojaldradas con chispas de chocolate. Tendencia 2024.</div>
-            <div class="product-footer">
-              <div class="product-price">$75 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Crookie" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img"><img src="images/pay-manzana.png" alt="Pay de Manzana" loading="lazy"></div>
-          <div class="product-info">
-            <div class="badge-new">🆕 Nuevo</div><div class="product-name">Pay de Manzana</div>
-            <div class="product-desc">Pay artesanal con manzana caramelizada y canela. Corteza crujiente hecha a mano.</div>
-            <div class="product-footer">
-              <div class="product-price">$200 <span>MXN pieza</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pay+de+Manzana" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Panel: Bebidas -->
-    <div id="tab-bebidas" class="menu-panel">
-      <div class="menu-panel-header">
-        <div>
-          <h3>Bebidas Naturales</h3>
-          <p>Jugos frescos para acompañar tu pan favorito.</p>
-        </div>
-      </div>
-      <div class="product-grid">
-        <div class="product-card">
-          <div class="product-img"><img src="images/jugos-naturales.png" alt="Jugos Naturales" loading="lazy"></div>
-          <div class="product-info">
-            <div class="badge-new">🆕 Nuevo</div><div class="product-name">Jugos Naturales</div>
-            <div class="product-desc">Jugos frescos del día: naranja, verde o frutos rojos. Sin conservadores, 100% natural.</div>
-            <div class="product-footer">
-              <div class="product-price">$65 <span>MXN c/u</span></div>
-              <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Jugo+Natural" target="_blank" class="btn-pedir">Pedir →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="menu-cta-block">
-      <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20hacer+mi+pedido" target="_blank" class="btn-wa-menu">
-        <i class="fa-brands fa-whatsapp"></i> Hacer mi pedido por WhatsApp
-      </a>
-      <p style="margin-top:14px;font-size:0.82rem;color:var(--color-text-muted);">El asesor de Paty toma tu pedido y procesa tu pago de forma segura · Pago vía Stripe</p>
+  <div id="tab-pizzas" class="menu-panel">
+    <div class="menu-panel-head"><h3>Pizzas Artesanales</h3><p>Base de masa madre &middot; Tamano personal 25 cm</p></div>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="images/pizza-artesanal-new.png" alt="Pizza Jitomate" loading="lazy"></div><div class="product-card-body"><div class="product-name">Base Jitomate</div><div class="product-desc">Salsa de jitomate casera, mozzarella y albahaca fresca.</div><div class="product-footer"><div class="product-price">$120 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Jitomate" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/pizza-artesanal-new.png" alt="Pizza Queso" loading="lazy"></div><div class="product-card-body"><div class="product-name">Base Queso</div><div class="product-desc">Crema y mezcla de quesos artesanales sobre masa madre.</div><div class="product-footer"><div class="product-price">$120 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Queso" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/pizza-artesanal-new.png" alt="Pizza Hawaiana" loading="lazy"></div><div class="product-card-body"><div class="product-name">Pina &amp; Jamon</div><div class="product-desc">Jamon de pavo, pina natural y mozzarella sobre base de masa madre.</div><div class="product-footer"><div class="product-price">$140 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Hawaiana" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/pizza-artesanal-new.png" alt="Pizza Pepperoni" loading="lazy"></div><div class="product-card-body"><div class="product-name">Pepperoni</div><div class="product-desc">Pepperoni premium sobre masa madre artesanal.</div><div class="product-footer"><div class="product-price">$150 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Pepperoni" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/pizza-artesanal-new.png" alt="Pizza Atelier" loading="lazy"></div><div class="product-card-body"><div class="badge-fav">Favorita</div><div class="product-name">Pizza Atelier</div><div class="product-desc">Elige 3 ingredientes: pepperoni, jamon, tocino, pina, champinones, aceitunas, pimiento, cebolla o jalapeno.</div><div class="product-footer"><div class="product-price">$165 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pizza+Atelier" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
     </div>
   </div>
-</section>
 
-<!-- ── CÓMO PEDIR ─────────────────────────────────── -->
-<section id="como-pedir" class="how-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">Simple y rápido</div>
-      <h2>Así de fácil es pedir</h2>
-      <p>Sin apps extras, sin cuentas nuevas. Solo tu WhatsApp.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-number">1</div>
-        <h4>Escríbenos por WhatsApp</h4>
-        <p>Nuestro asistente virtual te atiende 24/7. Cuéntale qué quieres — sin formatos, en lenguaje natural.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">2</div>
-        <h4>Confirma tu pedido</h4>
-        <p>A través de WhatsApp, tu pedido se organiza fácilmente: se calcula el envío a tu domicilio y se genera un link de pago seguro vía Stripe.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">3</div>
-        <h4>Recibe en casa 🏠</h4>
-        <p>Tu pan llega fresco a tu puerta. Todos los pedidos se entregan en 2 días hábiles.</p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:28px;margin-bottom:-12px;">
-      <div style="display:inline-flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--color-primary);border-radius:16px;padding:18px 28px;max-width:620px;box-shadow:0 4px 20px rgba(192,120,72,0.15);">
-        <i class="fa-regular fa-clock" style="font-size:1.4rem;color:var(--color-primary);flex-shrink:0;"></i>
-        <p style="margin:0;font-size:0.92rem;color:var(--color-dark);line-height:1.6;text-align:left;">
-          Procesamos y enviamos de <strong style="color:var(--color-primary);font-size:1rem;">lunes a viernes, 7am a 3pm</strong>. Si escribes fuera de ese horario, tu pedido queda registrado y lo procesamos a primera hora del siguiente día hábil.
-        </p>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:44px;">
-      <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20un%20pedido%20ahora%20🍞" target="_blank" class="btn-wa-hero">
-        <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i>
-        Empezar mi pedido ahora
-      </a>
+  <div id="tab-reposteria" class="menu-panel">
+    <div class="menu-panel-head"><h3>Reposteria &amp; Galletas</h3><p>Galletas estilo Nueva York y reposteria artesanal</p></div>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="images/trenza-nutella-new.png" alt="Trenza de Nutella" loading="lazy"></div><div class="product-card-body"><div class="badge-fav">Favorita</div><div class="product-name">Trenza de Nutella</div><div class="product-desc">Trenza artesanal rellena de Nutella, 20cm.</div><div class="product-footer"><div class="product-price">$100 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Trenza+Nutella" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/galleta-oreo.png" alt="Galleta Clasica NY" loading="lazy"></div><div class="product-card-body"><div class="product-name">Galleta Clasica N.Y.</div><div class="product-desc">Estilo Nueva York: crujiente por fuera, suave y chocolatosa por dentro.</div><div class="product-footer"><div class="product-price">$45 <span>MXN c/u</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta+NY" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/galleta-oreo.png" alt="Galleta Oreo" loading="lazy"></div><div class="product-card-body"><div class="product-name">Galleta Oreo</div><div class="product-desc">Masa artesanal con trozos de Oreo integrados.</div><div class="product-footer"><div class="product-price">$50 <span>MXN c/u</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta+Oreo" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/galleta-oreo.png" alt="Galleta Nuez Chocolate" loading="lazy"></div><div class="product-card-body"><div class="product-name">Galleta Nuez &amp; Chocolate</div><div class="product-desc">Nuez tostada y chocolate semi-amargo en masa artesanal.</div><div class="product-footer"><div class="product-price">$55 <span>MXN c/u</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Galleta+Nuez" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/crookie.png" alt="Crookie" loading="lazy"></div><div class="product-card-body"><div class="badge-new">Nuevo</div><div class="product-name">Crookie</div><div class="product-desc">Croissant + Cookie: capas hojaldradas con chispas de chocolate.</div><div class="product-footer"><div class="product-price">$75 <span>MXN c/u</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Crookie" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="images/pay-manzana.png" alt="Pay de Manzana" loading="lazy"></div><div class="product-card-body"><div class="badge-new">Nuevo</div><div class="product-name">Pay de Manzana</div><div class="product-desc">Pay artesanal con manzana caramelizada y canela.</div><div class="product-footer"><div class="product-price">$200 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Pay+Manzana" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
     </div>
   </div>
-</section>
 
-<!-- ── FAQ ───────────────────────────────────────── -->
-<section id="faq" class="faq-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow">Preguntas Frecuentes</div>
-      <h2>Todo lo que necesitas saber</h2>
-    </div>
-    <div class="faq-container">
-      <details>
-        <summary>¿Cuál es su zona de entrega y cuánto cuesta el envío?</summary>
-        <p>Entregamos en toda el <strong>Área Metropolitana de Guadalajara (AMG)</strong>: Guadalajara, Zapopan, San Pedro Tlaquepaque, Tonalá, Tlajomulco de Zúñiga y El Salto. El costo de envío se calcula con base en la distancia desde nuestra panadería en Bugambilias, Zapopan. Los primeros <strong>4.8 km son gratuitos</strong>; a partir de ahí, $13 MXN por km adicional. Al escribirnos por WhatsApp recibirás el costo exacto.</p>
-      </details>
-      <details>
-        <summary>¿Cuánto tarda mi pedido en estar listo?</summary>
-        <p><strong>Todos los productos:</strong> 2 días hábiles de producción, ya que requieren tiempo de preparación artesanal.</p>
-      </details>
-      <details>
-        <summary>¿Cómo funciona el pago?</summary>
-        <p>El pago es 100% seguro vía <strong>Stripe</strong> — la misma plataforma que usan Amazon y Airbnb. Al realizar tu pedido por WhatsApp, recibirás un link personalizado con el detalle completo. Aceptamos todas las tarjetas de crédito y débito.</p>
-      </details>
-      <details>
-        <summary>¿En qué horarios atienden por WhatsApp?</summary>
-        <p>El asistente de WhatsApp recibe pedidos las <strong>24 horas, 7 días de la semana</strong>. Panadería Paty procesa y envía los pedidos de <strong>lunes a viernes de 7am a 3pm</strong>. Si escribes fuera de ese horario, tu pedido queda registrado y lo procesamos a partir de las 7am del siguiente día hábil. Únicamente hacemos entregas a domicilio — no hay servicio de recolección en tienda.</p>
-      </details>
-      <details>
-        <summary>¿Hay mínimo de compra?</summary>
-        <p>No hay mínimo de compra. Puedes pedir desde una sola galleta 🍪. Para domicilio, el costo del envío aplica normalmente.</p>
-      </details>
+  <div id="tab-bebidas" class="menu-panel">
+    <div class="menu-panel-head"><h3>Bebidas Naturales</h3><p>Jugos frescos para acompanar tu pan favorito</p></div>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="images/jugos-naturales.png" alt="Jugos Naturales" loading="lazy"></div><div class="product-card-body"><div class="badge-new">Nuevo</div><div class="product-name">Jugos Naturales</div><div class="product-desc">Jugos frescos del dia: naranja, verde o frutos rojos. Sin conservadores, 100% natural.</div><div class="product-footer"><div class="product-price">$65 <span>MXN</span></div><a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20pedir%20Jugo+Natural" target="_blank" class="btn-pedir">Pedir &rarr;</a></div></div></div>
     </div>
   </div>
-</section>
 
-<!-- ── ATENCIÓN ESPECIAL / CONTACTO DIRECTO ──────────── -->
-<section id="contacto" style="background:var(--color-background);padding:80px 0;border-top:1px solid rgba(192,120,72,0.1);">
-  <div class="container" style="text-align:center;">
-
-    <div class="section-header">
-      <div class="eyebrow">Atención Personalizada</div>
-      <h2>¿Va más allá del menú regular?</h2>
-      <p style="color:var(--color-text-muted);max-width:560px;margin:0 auto 12px;line-height:1.8;">
-        Eventos, cotizaciones, volúmenes o sugerencias. Escríbenos directamente al correo y Paty te responde.
-      </p>
-      <p style="color:var(--color-primary);max-width:520px;margin:0 auto 36px;font-size:0.88rem;background:rgba(192,120,72,0.08);border:1px solid rgba(192,120,72,0.2);border-radius:12px;padding:10px 20px;display:inline-block;">
-        📱 Para pedidos del menú, escríbenos por WhatsApp — proceso rápido, pago seguro y seguimiento automático de tu orden.
-      </p>
-    </div>
-
-    <!-- ── FORMULARIO ── -->
-    <form id="solicitud-form" style="max-width:560px;margin:0 auto;text-align:left;" onsubmit="enviarSolicitud(event)">
-
-      <div style="display:grid;gap:16px;margin-bottom:24px;">
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div>
-            <label style="display:block;color:var(--color-text-muted);font-size:0.78rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Tu nombre</label>
-            <input id="sf-nombre" type="text" placeholder="Nombre completo" required
-              style="width:100%;background:#fff;border:1.5px solid rgba(192,120,72,0.2);border-radius:12px;padding:13px 16px;color:var(--color-dark);font-size:0.97rem;outline:none;transition:border 0.2s;box-sizing:border-box;font-family:inherit;"
-              onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='rgba(192,120,72,0.2)'">
-          </div>
-          <div>
-            <label style="display:block;color:var(--color-text-muted);font-size:0.78rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Teléfono</label>
-            <input id="sf-tel" type="tel" placeholder="331 234 5678"
-              style="width:100%;background:#fff;border:1.5px solid rgba(192,120,72,0.2);border-radius:12px;padding:13px 16px;color:var(--color-dark);font-size:0.97rem;outline:none;transition:border 0.2s;box-sizing:border-box;font-family:inherit;"
-              onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='rgba(192,120,72,0.2)'">
-          </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div>
-            <label style="display:block;color:var(--color-text-muted);font-size:0.78rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Tipo de solicitud</label>
-            <select id="sf-tipo" required
-              style="width:100%;background:#fff;border:1.5px solid rgba(192,120,72,0.2);border-radius:12px;padding:13px 16px;color:var(--color-dark);font-size:0.97rem;outline:none;transition:border 0.2s;box-sizing:border-box;appearance:none;font-family:inherit;"
-              onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='rgba(192,120,72,0.2)'">
-              <option value="">Selecciona...</option>
-              <option value="Evento especial">🎉 Evento especial</option>
-              <option value="Pedido de volumen">📦 Pedido de volumen</option>
-              <option value="Sugerencia">💌 Sugerencia</option>
-              <option value="Queja o mejora">⭐ Queja o mejora</option>
-              <option value="Otro">💬 Otro</option>
-            </select>
-          </div>
-          <div>
-            <label style="display:block;color:var(--color-text-muted);font-size:0.78rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Fecha deseada</label>
-            <input id="sf-fecha" type="date"
-              style="width:100%;background:#fff;border:1.5px solid rgba(192,120,72,0.2);border-radius:12px;padding:13px 16px;color:var(--color-dark);font-size:0.97rem;outline:none;transition:border 0.2s;box-sizing:border-box;font-family:inherit;"
-              onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='rgba(192,120,72,0.2)'">
-          </div>
-        </div>
-
-        <div>
-          <label style="display:block;color:var(--color-text-muted);font-size:0.78rem;margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;font-weight:600;">Cuéntanos todo</label>
-          <textarea id="sf-desc" rows="4" placeholder="Describe tu solicitud con el mayor detalle posible..." required
-            style="width:100%;background:#fff;border:1.5px solid rgba(192,120,72,0.2);border-radius:12px;padding:13px 16px;color:var(--color-dark);font-size:0.97rem;outline:none;transition:border 0.2s;resize:vertical;box-sizing:border-box;font-family:inherit;"
-            onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='rgba(192,120,72,0.2)'"></textarea>
-        </div>
-
-      </div>
-
-      <button type="submit" id="sf-btn"
-        style="width:100%;background:var(--color-primary);color:#fff;font-weight:700;font-size:1rem;padding:16px 32px;border-radius:50px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 8px 28px rgba(192,120,72,0.3);transition:transform 0.2s,box-shadow 0.2s,background 0.2s;"
-        onmouseover="this.style.background='#a8622e';this.style.transform='translateY(-2px)';this.style.boxShadow='0 12px 36px rgba(192,120,72,0.4)'"
-        onmouseout="this.style.background='var(--color-primary)';this.style.transform='translateY(0)';this.style.boxShadow='0 8px 28px rgba(192,120,72,0.3)'">
-        <i class="fa-regular fa-envelope" style="font-size:1.1rem;"></i>
-        Enviar solicitud especial a Paty
-      </button>
-
-      <div id="sf-ok" style="display:none;margin-top:16px;background:rgba(192,120,72,0.08);border:1px solid rgba(192,120,72,0.25);border-radius:12px;padding:14px 20px;text-align:center;">
-        <p style="color:var(--color-primary);font-weight:600;margin:0;">✉️ ¡Listo! Se abrió tu cliente de correo con la solicitud lista para enviar.</p>
-        <p style="color:var(--color-text-muted);font-size:0.85rem;margin:6px 0 0;">Solo presiona <strong>Enviar</strong> en tu correo. Paty te responderá pronto.</p>
-      </div>
-
-      <p style="color:var(--color-text-muted);font-size:0.82rem;text-align:center;margin-top:14px;">
-        Para pedidos del menú, escríbenos por WhatsApp — proceso ágil, con pago y seguimiento incluido.
-      </p>
-    </form>
-
-    <script>
-    function enviarSolicitud(e) {
-      e.preventDefault();
-      const nombre = document.getElementById('sf-nombre').value.trim();
-      const tel    = document.getElementById('sf-tel').value.trim();
-      const tipo   = document.getElementById('sf-tipo').value;
-      const fecha  = document.getElementById('sf-fecha').value;
-      const desc   = document.getElementById('sf-desc').value.trim();
-      const fechaStr = fecha
-        ? new Date(fecha + 'T12:00').toLocaleDateString('es-MX', { weekday:'long', day:'numeric', month:'long' })
-        : 'Por definir';
-      const subject = `[Solicitud Especial] ${tipo} - ${nombre}`;
-      const body = [
-        `Hola Paty,`,
-        ``,
-        `Te escribo con una solicitud especial:`,
-        ``,
-        `👤 Nombre: ${nombre}`,
-        tel ? `📱 Teléfono: ${tel}` : '',
-        `🎯 Tipo: ${tipo}`,
-        `📅 Fecha deseada: ${fechaStr}`,
-        ``,
-        `✍️ Detalle:`,
-        desc,
-        ``,
-        `¡Quedo en espera de tu respuesta!`
-      ].filter(l => l !== undefined).join('\n');
-      window.open(
-        `mailto:hola@lamadremasa.mx?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
-        '_blank'
-      );
-      document.getElementById('sf-ok').style.display = 'block';
-    }
-    </script>
-
+  <div class="menu-cta">
+    <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20mi%20pedido" target="_blank" class="btn-wa">Hacer mi pedido por WhatsApp</a>
+    <p>Paty confirma tu pedido y procesa tu pago de forma segura</p>
   </div>
-</section>
+</div></section>
 
-
-
-<!-- ── FOOTER ─────────────────────────────────────── -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <h3>Paty Home Bakery</h3>
-        <p style="font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:rgba(212,175,55,0.7);margin-top:-8px;margin-bottom:10px;font-family:'Inter',sans-serif;">La Madre Masas Artesanales</p>
-        <p>Pan de masa madre de fermentación lenta y repostería artesanal. Todo con amor, tiempo y sin prisa. Zapopan, Jalisco.</p>
-        <p style="font-size:0.82rem;margin-top:8px;margin-bottom:12px;color:rgba(255,255,255,0.6);">🕐 Procesamos pedidos <strong style="color:rgba(255,255,255,0.85);">L–V de 7am a 3pm</strong> · WhatsApp 24/7</p>
-        <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20un%20pedido%20🍞" target="_blank" class="footer-wa-btn">
-          <i class="fa-brands fa-whatsapp"></i> Hacer un Pedido
-        </a>
-        <div class="footer-social">
-          <a href="https://instagram.com/lamadremasasartesanales" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://wa.me/525667751226" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Menú</h4>
-        <ul>
-          <li><a href="#menu">Masa Madre</a></li>
-          <li><a href="#menu">Pizzas Artesanales</a></li>
-          <li><a href="#menu">Repostería & Galletas</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <ul>
-          <li>📍 Magnolias 111, Bugambilias, Zapopan, Jal.</li>
-          <li>📱 <a href="https://wa.me/525667751226">WhatsApp: +52 1 56 6775 1226</a></li>
-          <li>✉️ <a href="mailto:hola@lamadremasa.mx">hola@lamadremasa.mx</a></li>
-          <li>📸 <a href="https://instagram.com/lamadremasasartesanales" target="_blank">@lamadremasasartesanales</a></li>
-          <li style="margin-top:12px;"><a href="privacy.html">Política de Privacidad</a></li>
-          <li><a href="terms.html">Términos y Condiciones</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      © 2025 Paty Home Bakery · La Madre Masas Artesanales · Zapopan, Jalisco
-      <div style="margin-top:10px;font-size:0.72rem;color:var(--color-text-muted);letter-spacing:0.5px;">Powered by <strong style="color:var(--color-text-muted);">GenyX</strong></div>
-    </div>
+<section id="como-pedir" class="section how-section"><div class="container">
+  <div class="section-label" style="color:var(--c-gold)">Proceso</div>
+  <h2 class="section-title" style="color:#fff">Asi de facil</h2>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-num">1</div><h4>Escribenos</h4><p>Manda un WhatsApp con lo que te antoja. Paty te confirma disponibilidad y precio.</p></div>
+    <div class="step-card"><div class="step-num">2</div><h4>Horneamos</h4><p>Tu pedido se elabora desde cero con masa madre fresca. Fermentacion natural sin atajos.</p></div>
+    <div class="step-card"><div class="step-num">3</div><h4>Recibe en casa</h4><p>Entrega a domicilio en el AMG. Tu pan llega fresco directo del horno a tu mesa.</p></div>
   </div>
-</footer>
+</div></section>
 
-<!-- ── FLOATING WA BUTTON ─────────────────────────── -->
-<div class="wa-float">
-  <span class="wa-float-tooltip">¡Haz tu pedido aquí! 🍞</span>
-  <a href="https://wa.me/525667751226?text=Hola%20Paty%2C%20quiero%20hacer%20un%20pedido%20🍞" target="_blank" aria-label="Pedir por WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
-</div>
+<section id="faq" class="section faq-section"><div class="container">
+  <div class="section-label">Preguntas Frecuentes</div>
+  <h2 class="section-title">Lo que necesitas saber</h2>
+  <div class="faq-container" style="margin-top:32px">
+    <details><summary>Cuanto tarda mi pedido?</summary><p>Como todo se hornea a pedido, el tiempo de entrega es de aproximadamente 2 dias habiles desde que confirmas tu pedido por WhatsApp.</p></details>
+    <details><summary>Hacen entregas a domicilio?</summary><p>Si, entregamos a domicilio en Zapopan y el Area Metropolitana de Guadalajara. El costo de envio depende de la zona.</p></details>
+    <details><summary>Que es la masa madre?</summary><p>La masa madre es un cultivo natural de harina y agua que fermenta durante 48 horas. No usamos levadura comercial, aditivos ni conservadores. El resultado es un pan con mejor sabor, textura y digestibilidad.</p></details>
+    <details><summary>Puedo hacer pedidos para eventos?</summary><p>Si, aceptamos pedidos especiales para eventos. Escribenos por WhatsApp con los detalles y te cotizamos.</p></details>
+    <details><summary>Que metodos de pago aceptan?</summary><p>Aceptamos transferencia bancaria y pago con tarjeta. Te compartimos los detalles al confirmar tu pedido.</p></details>
+  </div>
+</div></section>
+
+<footer class="footer"><div class="container">
+  <div class="footer-grid">
+    <div><div class="footer-brand">La Madre</div><p>Masas artesanales de fermentacion natural.<br>Zapopan, Jalisco, Mexico.</p></div>
+    <div><h4>Menu</h4><a href="#menu">Masa Madre</a><br><a href="#menu">Pizzas</a><br><a href="#menu">Reposteria</a><br><a href="#menu">Bebidas</a></div>
+    <div><h4>Contacto</h4><a href="https://wa.me/525667751226" target="_blank">WhatsApp: +52 566 775 1226</a><br><a href="mailto:hola@lamadremasa.mx">hola@lamadremasa.mx</a></div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 La Madre &middot; Masas Artesanales</span><span style="color:rgba(255,255,255,0.25)">Powered by GenyX</span></div>
+</div></footer>
+
+<a href="https://wa.me/525667751226?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.458-1.495A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+</a>
 
 <script>
-
-  // ── Tab switching for menu carousel ──
-  function showTab(id, btn) {
-    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
-    document.getElementById('tab-' + id).classList.add('active');
-    btn.classList.add('active');
-  }
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
-    });
-  });
-  // Header shadow on scroll
-  const header = document.querySelector('.header');
-  window.addEventListener('scroll', () => {
-    header.style.boxShadow = window.scrollY > 20
-      ? '0 4px 24px rgba(0,0,0,0.1)' : '';
-  });
-
-  // ── IntersectionObserver: fade-in-up on scroll ──
-  (function() {
-    // Add fade-in-up class to all product cards
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.classList.add('fade-in-up');
-    });
-    // Observe all fade-in-up elements
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('is-visible');
-          }, i * 60);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-  })();
-
-  // ── 🎉 PAGO EXITOSO — ticket dinámico con datos del pedido ─────────────────
-  (function() {
-    const params = new URLSearchParams(window.location.search);
-    const sid = params.get('sid') || params.get('session_id');
-    if (!sid && params.get('pago') !== 'exitoso') return;
-    if (params.get('pago') !== 'exitoso') return;
-
-    const BACKEND = 'https://paty-backend-dkzk.onrender.com';
-
-    // Crear overlay inmediatamente con loading state
-    const overlay = document.createElement('div');
-    overlay.id = 'pago-exitoso-overlay';
-    overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.72);backdrop-filter:blur(6px);padding:24px;overflow-y:auto;';
-
-    function renderTicket(t) {
-      const items = (t && t.items) || [];
-      const nombre = (t && t.nombre) || '';
-      const wa = (t && t.whatsapp) || '';
-      const addr = (t && t.address) || '';
-      const total = t ? (t.total || 0) : 0;
-      const subtotal = t ? (t.subtotal || 0) : 0;
-      const shipping = t ? (t.shipping || 0) : 0;
-      const orderId = t ? (t.order_id || '') : '';
-      const fecha = t ? (t.fecha || '') : '';
-      const hora  = t ? (t.hora  || '') : '';
-
-      const itemsHtml = items.length > 0
-        ? items.map(it => `<div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:0.87rem;">
-            <span>${it.nombre || 'Producto'} ×${it.qty || 1}</span>
-            <b style="color:#065f46;margin-left:12px;">$${(it.total_item||0).toFixed(2)}</b>
-          </div>`).join('')
-        : '<p style="color:#6b7280;font-size:0.83rem;text-align:center;margin:8px 0;">Revisa tu resumen en WhatsApp 📲</p>';
-
-      return `<div style="background:#fff;border-radius:24px;max-width:400px;width:100%;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,0.3);font-family:'Inter',sans-serif;margin:auto;">
-        <div style="background:linear-gradient(135deg,#065f46,#059669);padding:28px 24px 20px;text-align:center;color:#fff;">
-          <div style="width:64px;height:64px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:32px;">✅</div>
-          <h2 style="margin:0 0 6px;font-size:1.35rem;font-weight:800;">¡Pago Recibido!</h2>
-          <p style="margin:0;font-size:0.88rem;opacity:0.9;">Tu pedido está siendo preparado con amor 🍞</p>
-          ${orderId ? `<div style="display:inline-block;background:rgba(255,255,255,0.18);border-radius:20px;padding:4px 16px;margin-top:10px;font-size:0.78rem;font-weight:700;letter-spacing:.04em;">Pedido #${orderId}</div>` : ''}
-          ${fecha ? `<div style="margin-top:8px;font-size:0.75rem;opacity:0.85;">📅 ${fecha}${hora ? ' · ' + hora : ''}</div>` : ''}
-        </div>
-        <div style="padding:20px 24px;">
-          ${nombre || wa || addr ? `
-            <div style="font-size:10px;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">👤 Datos del Cliente</div>
-            ${nombre ? `<div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:5px;"><span style="color:#6b7280;">Nombre</span><b>${nombre}</b></div>` : ''}
-            ${wa ? `<div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:5px;"><span style="color:#6b7280;">📱 WhatsApp</span><span>${wa}</span></div>` : ''}
-            ${addr ? `<div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:5px;align-items:flex-start;"><span style="color:#6b7280;">📍 Dirección</span><span style="text-align:right;max-width:58%;">${addr}</span></div>` : ''}
-            <hr style="border:none;border-top:1px dashed #e5e7eb;margin:12px 0;">
-          ` : ''}
-          <div style="font-size:10px;font-weight:800;color:#92400e;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">🛒 Productos (${items.length})</div>
-          ${itemsHtml}
-          <div style="border-top:1px dashed #e5e7eb;margin-top:12px;padding-top:10px;">
-            ${subtotal > 0 ? `<div style="display:flex;justify-content:space-between;font-size:0.84rem;color:#6b7280;margin-bottom:4px;"><span>Subtotal</span><span>$${subtotal.toFixed(2)} MXN</span></div>` : ''}
-            ${shipping > 0 ? `<div style="display:flex;justify-content:space-between;font-size:0.84rem;color:#6b7280;margin-bottom:4px;"><span>🚚 Envío</span><span>$${shipping.toFixed(2)} MXN</span></div>` : ''}
-            <div style="display:flex;justify-content:space-between;font-weight:900;font-size:1.05rem;color:#065f46;margin-top:4px;"><span>TOTAL PAGADO</span><span>${total > 0 ? '$'+total.toFixed(2)+' MXN' : '——'}</span></div>
-          </div>
-        </div>
-        <div style="background:#f9fafb;padding:16px 24px;text-align:center;border-top:1px dashed #e2e8f0;">
-          <div style="font-size:0.8rem;color:#6b7280;margin-bottom:14px;">Paty se pondrá en contacto para coordinar la entrega 📲</div>
-          <button onclick="document.getElementById('pago-exitoso-overlay').remove(); window.history.replaceState({},'','/')"
-            style="background:#25D366;color:#fff;border:none;border-radius:25px;padding:12px 28px;font-size:0.95rem;font-weight:700;cursor:pointer;width:100%;">
-            💬 Volver a la página
-          </button>
-        </div>
-      </div>`;
-    }
-
-    overlay.innerHTML = `<div style="color:#fff;text-align:center;"><div style="font-size:48px;margin-bottom:12px;">⏳</div><p style="font-weight:700;">Cargando tu ticket…</p></div>`;
-    document.body.appendChild(overlay);
-
-    // Fetch ticket data
-    if (sid) {
-      fetch(`${BACKEND}/api/orden-exitosa/${sid}`)
-        .then(r => r.ok ? r.json() : null)
-        .then(data => { overlay.innerHTML = renderTicket(data); })
-        .catch(() => { overlay.innerHTML = renderTicket(null); });
-    } else {
-      overlay.innerHTML = renderTicket(null);
-    }
-  })();
-
-
+function showTab(id,btn){
+  document.querySelectorAll('.menu-panel').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('.menu-tab').forEach(function(t){t.classList.remove('active')});
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
 </script>
 </body>
 </html>

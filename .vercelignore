@@ -1,0 +1,9 @@
+images/menu/La Madre/
+images/menu/clasificadas/
+images/menu/no-clasificadas/
+images/menu/archivero/
+scripts/
+data/
+.env
+.DS_Store
+*.mov
