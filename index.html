@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="scroll-behavior:smooth;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +20,22 @@
       --color-dark: #1a1008;
     }
 
+    /* GLOBAL: Selection styling with brand colors */
+    ::selection { background: var(--color-primary); color: var(--color-background); }
+    ::-moz-selection { background: var(--color-primary); color: var(--color-background); }
+
+    /* Scroll-triggered animation base */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                  transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .fade-in-up.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* HEADER */
     .header {
       background: rgba(253,251,247,0.92);
@@ -36,7 +52,7 @@
       font-weight: 700;
       font-size: 0.9rem;
       display: inline-flex; align-items: center; gap: 8px;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       box-shadow: 0 4px 14px rgba(37,211,102,0.35);
     }
     .btn-wa-header:hover {
@@ -56,15 +72,23 @@
       overflow: hidden;
     }
     .hero-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/sourdough.png');
+      position: absolute; inset: -20% 0 0 0;
+      background-image: url('images/hero.png');
       background-size: cover; background-position: center 30%;
-      opacity: 0.42;
+      opacity: 0.52;
       mix-blend-mode: normal; z-index: 0;
+      will-change: transform;
+      height: 120%;
+      background-attachment: fixed;
+    }
+    @media (max-width: 768px) {
+      .hero-bg { background-attachment: scroll; }
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(26,16,8,0.72) 0%, rgba(192,120,72,0.18) 100%);
+      background:
+        linear-gradient(180deg, rgba(26,16,8,0.82) 0%, rgba(26,16,8,0.55) 40%, rgba(192,120,72,0.22) 100%),
+        radial-gradient(ellipse at 30% 80%, rgba(192,120,72,0.18) 0%, transparent 70%);
       z-index: 1;
     }
     .hero-content {
@@ -107,10 +131,16 @@
       font-weight: 700; font-size: 1.05rem;
       display: inline-flex; align-items: center; gap: 10px;
       box-shadow: 0 8px 32px rgba(37,211,102,0.45);
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      animation: cta-pulse 2.8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+    }
+    @keyframes cta-pulse {
+      0%, 100% { box-shadow: 0 8px 32px rgba(37,211,102,0.45); }
+      50%      { box-shadow: 0 8px 40px rgba(37,211,102,0.65), 0 0 0 6px rgba(37,211,102,0.12); }
     }
     .btn-wa-hero:hover {
       background: var(--wa-green-dark);
+      animation: none;
       transform: translateY(-3px);
       box-shadow: 0 12px 40px rgba(37,211,102,0.55);
       color: #fff;
@@ -120,7 +150,7 @@
       border: 1.5px solid rgba(255,255,255,0.35);
       border-radius: 50px; padding: 15px 30px;
       font-weight: 600; font-size: 1rem;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
     .btn-ghost:hover {
       background: rgba(255,255,255,0.1);
@@ -160,6 +190,49 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     }
     .story-img img { width:100%; height:100%; object-fit:cover; }
+
+    /* WHEAT DIVIDER */
+    .wheat-divider {
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 0; gap: 16px;
+    }
+    .wheat-divider .line {
+      flex: 1; max-width: 120px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    }
+    .wheat-divider svg { opacity: 0.45; flex-shrink: 0; }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      padding: 80px 0;
+      background: linear-gradient(180deg, var(--color-surface-alt) 0%, var(--color-background) 100%);
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+      max-width: 960px; margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .testimonials-grid { grid-template-columns: 1fr; gap: 20px; }
+    }
+    .testimonial-card {
+      background: var(--color-surface); border-radius: var(--border-radius-lg);
+      padding: 32px 28px; text-align: center;
+      box-shadow: 0 4px 20px rgba(44, 62, 80, 0.07);
+      border: 1px solid rgba(192,120,72,0.08);
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+                  box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(192,120,72,0.12);
+    }
+    .testimonial-stars { color: var(--color-gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-text {
+      font-size: 0.95rem; color: var(--color-text-muted); line-height: 1.7;
+      margin-bottom: 20px; font-style: italic;
+    }
+    .testimonial-author { font-weight: 700; color: var(--color-primary); font-size: 0.88rem; }
+    .testimonial-role { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 2px; }
 
     /* MENU SECTION */
     .menu-section { background: var(--color-surface-alt); padding: 80px 0; }
@@ -304,6 +377,7 @@
     .wa-float a {
       width: 62px; height: 62px; border-radius: 50%;
       background: var(--wa-green);
+      will-change: transform;
       display: flex; align-items: center; justify-content: center;
       color: #fff; font-size: 1.8rem;
       box-shadow: 0 6px 28px rgba(37,211,102,0.55);
@@ -336,9 +410,22 @@
       .trust-strip-inner { flex-direction: column; gap: 12px; }
       .menu-grid { grid-template-columns: 1fr 1fr; }
     }
+    @media(max-width:768px) {
+      .carousel-scroll { grid-template-columns: 1fr 1fr; }
+      .story-section .grid-2-col { grid-template-columns: 1fr; }
+      .story-img { height: 300px; }
+      .menu-tabs {
+        flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start;
+        -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory;
+        padding-bottom: 8px; gap: 8px;
+      }
+      .menu-tabs::-webkit-scrollbar { display: none; }
+      .menu-tab { flex-shrink: 0; scroll-snap-align: start; }
+    }
     @media(max-width:540px) {
       .menu-grid { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; }
+      .carousel-scroll { grid-template-columns: 1fr; }
     }
 
     /* ── MENU CAROUSEL (nuevo) ───────────────────────── */
@@ -347,7 +434,7 @@
       display:inline-flex; align-items:center; gap:8px;
       padding:12px 22px; border-radius:50px; border:1.5px solid rgba(192,120,72,0.3);
       background:#fff; color:var(--color-text-muted); font-weight:600;
-      font-size:0.9rem; cursor:pointer; transition:all .25s ease; font-family:inherit;
+      font-size:0.9rem; cursor:pointer; transition:all .25s cubic-bezier(0.25, 0.8, 0.25, 1); font-family:inherit;
     }
     .menu-tab svg { transition:all .25s; }
     .menu-tab:hover { border-color:var(--color-primary); color:var(--color-primary); background:rgba(192,120,72,0.04); }
@@ -369,13 +456,18 @@
     .product-card {
       background:#fff; border-radius:18px; overflow:hidden;
       box-shadow:0 3px 16px rgba(0,0,0,0.07); border:1px solid rgba(192,120,72,0.08);
-      transition:all .3s ease; flex-shrink:0;
+      transition:all .3s cubic-bezier(0.25, 0.8, 0.25, 1); flex-shrink:0;
     }
     @media(max-width:600px) { .product-card { min-width:220px; scroll-snap-align:start; } }
     .product-card:hover { transform:translateY(-5px); box-shadow:0 12px 36px rgba(192,120,72,0.16); border-color:rgba(192,120,72,0.22); }
-    .product-img { height:180px; overflow:hidden; background:#f5f0eb; }
-    .product-img img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
-    .product-card:hover .product-img img { transform:scale(1.06); }
+    .product-img { height:180px; overflow:hidden; background:#f5f0eb; position:relative; }
+    .product-img img { width:100%; height:100%; object-fit:cover; transition:transform .3s cubic-bezier(0.25, 0.8, 0.25, 1); will-change:transform; }
+    .product-card:hover .product-img img { transform:scale(1.05); }
+    .product-img::after {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:40%;
+      background:linear-gradient(to top, rgba(0,0,0,0.15), transparent);
+      pointer-events:none; z-index:1;
+    }
     .product-info { padding:16px 18px 18px; }
     .product-name { font-family:'Playfair Display',serif; font-weight:700; color:var(--color-primary); font-size:1rem; margin-bottom:5px; }
     .product-desc { font-size:0.8rem; color:var(--color-text-muted); line-height:1.5; margin-bottom:14px; }
@@ -383,11 +475,13 @@
     .product-price { font-weight:800; color:var(--color-accent,#be7844); font-size:1.05rem; }
     .product-price span { font-size:0.72rem; font-weight:500; color:var(--color-text-muted); }
     .btn-pedir {
-      background:var(--color-primary); color:#fff; border-radius:50px;
-      padding:7px 14px; font-size:0.78rem; font-weight:700;
-      white-space:nowrap; transition:all .2s ease; text-decoration:none;
+      background:var(--wa-green); color:#fff; border-radius:50px;
+      padding:8px 18px; font-size:0.8rem; font-weight:700;
+      white-space:nowrap; transition:all .25s cubic-bezier(0.25, 0.8, 0.25, 1); text-decoration:none;
+      box-shadow:0 3px 12px rgba(37,211,102,0.3);
+      display:inline-flex; align-items:center; gap:4px;
     }
-    .btn-pedir:hover { background:#a8622e; color:#fff; transform:translateY(-1px); }
+    .btn-pedir:hover { background:var(--wa-green-dark); color:#fff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(37,211,102,0.4); }
     .badge-fav {
       display:inline-block; background:var(--color-primary); color:#fff;
       font-size:0.6rem; font-weight:700; letter-spacing:1px; padding:2px 8px;
@@ -469,7 +563,53 @@
       </a>
     </div>
     <div class="story-img">
-      <img src="images/sourdough.png" alt="Pan artesanal de masa madre Panadería Paty">
+      <img src="images/hogaza-natural.png" alt="Pan artesanal de masa madre Panadería Paty" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ── WHEAT DIVIDER ────────────────────────────────── -->
+<div class="wheat-divider">
+  <span class="line"></span>
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+    <path d="M24 4v40" stroke="var(--color-primary)" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M24 12c-4-3-8-2-10 0 4-1 7 1 10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 12c4-3 8-2 10 0-4-1-7 1-10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 20c-5-3-9-2-11 0 5-1 8 1 11 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 20c5-3 9-2 11 0-5-1-8 1-11 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 28c-4-3-8-2-10 0 4-1 7 1 10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 28c4-3 8-2 10 0-4-1-7 1-10 4" stroke="var(--color-primary)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span class="line"></span>
+</div>
+
+<!-- ── TESTIMONIOS ────────────────────────────────── -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Lo que dicen nuestros clientes</div>
+      <h2>Familias que ya confían en Paty</h2>
+      <p>Más de 500 familias en Guadalajara eligen nuestro pan cada semana.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Desde que probamos la hogaza de dátil y nuez no compramos pan en otro lado. La corteza crujiente y el sabor de la fermentación lenta son incomparables. ¡Mis hijos la piden todos los fines!"</p>
+        <div class="testimonial-author">Mariana Rodríguez</div>
+        <div class="testimonial-role">Mamá de 3, Providencia</div>
+      </div>
+      <div class="testimonial-card fade-in-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"El servicio por WhatsApp es increíblemente cómodo. Pides hoy y en dos días tienes pan recién horneado en tu puerta. La calidad se siente en cada rebanada — no hay comparación."</p>
+        <div class="testimonial-author">Carlos Mendoza</div>
+        <div class="testimonial-role">Chef aficionado, Zapopan</div>
+      </div>
+      <div class="testimonial-card fade-in-up">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Las galletas N.Y. son las mejores que he probado en Guadalajara. Se nota que todo es artesanal y hecho con cariño. Paty siempre responde rápido y el pan llega perfecto."</p>
+        <div class="testimonial-author">Sofía Hernández</div>
+        <div class="testimonial-role">Clienta frecuente, Chapalita</div>
+      </div>
     </div>
   </div>
 </section>
@@ -981,7 +1121,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      © 2025 Paty Home Bakery · La Madre Masas Artesanales · Zapopan, Jalisco · Powered by <strong style="color:rgba(255,255,255,0.5);">GenyX</strong>
+      © 2025 Paty Home Bakery · La Madre Masas Artesanales · Zapopan, Jalisco
+      <div style="margin-top:10px;font-size:0.72rem;color:var(--color-text-muted);letter-spacing:0.5px;">Powered by <strong style="color:var(--color-text-muted);">GenyX</strong></div>
     </div>
   </div>
 </footer>
@@ -1016,6 +1157,26 @@
     header.style.boxShadow = window.scrollY > 20
       ? '0 4px 24px rgba(0,0,0,0.1)' : '';
   });
+
+  // ── IntersectionObserver: fade-in-up on scroll ──
+  (function() {
+    // Add fade-in-up class to all product cards
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.classList.add('fade-in-up');
+    });
+    // Observe all fade-in-up elements
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('is-visible');
+          }, i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  })();
 
   // ── 🎉 PAGO EXITOSO — ticket dinámico con datos del pedido ─────────────────
   (function() {
