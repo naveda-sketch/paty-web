@@ -1,0 +1,72 @@
+[
+  {
+    "producto": "Crookie",
+    "slug": "crookie",
+    "archivo": "IMG_5088 (1).JPG",
+    "calidad": 9,
+    "menu_ready": true
+  },
+  {
+    "producto": "Galletas NY nuez y chocolate",
+    "slug": "galleta-nuez-choco",
+    "archivo": "IMG_4572 (1).JPG",
+    "calidad": 9,
+    "menu_ready": true
+  },
+  {
+    "producto": "Galleta NY masa madre",
+    "slug": "galleta-ny",
+    "archivo": "IMG_0695.jpeg",
+    "calidad": 8,
+    "menu_ready": true
+  },
+  {
+    "producto": "Galleta NY oreo",
+    "slug": "galleta-oreo",
+    "archivo": "IMG_3185.jpeg",
+    "calidad": 8,
+    "menu_ready": true
+  },
+  {
+    "producto": "Hogaza natural",
+    "slug": "hogaza-natural",
+    "archivo": "A6EA81D9-8997-45CB-B9B5-8648EDFEA91F.jpeg",
+    "calidad": 9,
+    "menu_ready": true
+  },
+  {
+    "producto": "Hogaza de semillas",
+    "slug": "hogaza-semillas",
+    "archivo": "IMG_5077 (1).JPG",
+    "calidad": 9,
+    "menu_ready": true
+  },
+  {
+    "producto": "Masa madre (general)",
+    "slug": "masa-madre-general",
+    "archivo": "IMG_5075 (1).JPG",
+    "calidad": 9,
+    "menu_ready": true
+  },
+  {
+    "producto": "Pizza pina y jamon",
+    "slug": "pizza-hawaiana",
+    "archivo": "IMG_0234.jpeg",
+    "calidad": 6,
+    "menu_ready": false
+  },
+  {
+    "producto": "Preparaciones",
+    "slug": "preparaciones",
+    "archivo": "IMG_4484.jpeg",
+    "calidad": 8,
+    "menu_ready": true
+  },
+  {
+    "producto": "Trenza de nutella",
+    "slug": "trenza-nutella",
+    "archivo": "IMG_5087 (1).JPG",
+    "calidad": 9,
+    "menu_ready": true
+  }
+]

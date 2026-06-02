@@ -4,3 +4,4 @@ images/menu/no-clasificadas/
 images/menu/archivero/
 .env
 .DS_Store
+.vercel
