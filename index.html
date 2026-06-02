@@ -6,22 +6,27 @@
   <title>La Madre · Masas Artesanales | Panadería Paty · Zapopan</title>
   <meta name="description" content="Pan de masa madre, fermentación natural 48 horas. Pedidos por WhatsApp con entrega a domicilio en Zapopan y Área Metropolitana de Guadalajara.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     a{text-decoration:none;color:inherit}img{max-width:100%;display:block}
     button{cursor:pointer;border:none;background:none;font-family:inherit}
     ::selection{background:#3d2b1f;color:#faf6f0}
     :root{
-      --c-cream:#faf6f0;--c-warm:#f3ece2;--c-dark:#1a1208;--c-brown:#3d2b1f;
-      --c-crust:#8b6914;--c-gold:#c9a227;--c-muted:#8a7e70;--c-line:rgba(61,43,31,0.1);
+      --c-cream:#FFFBF0;--c-warm:#FEF3C7;--c-dark:#1a1208;--c-brown:#78350F;
+      --c-crust:#92400E;--c-gold:#B45309;--c-muted:#8a7e70;--c-line:rgba(61,43,31,0.1);
       --c-wa:#25D366;--c-wa-dark:#128C7E;
-      --font-d:'DM Serif Display',Georgia,serif;--font-b:'DM Sans',system-ui,sans-serif;
+      --font-d:'Lora',Georgia,serif;--font-b:'Raleway','Helvetica Neue',sans-serif;
       --ease:cubic-bezier(0.25,0.8,0.25,1);--max-w:1140px;
     }
     body{font-family:var(--font-b);background:var(--c-cream);color:var(--c-dark);line-height:1.6;-webkit-font-smoothing:antialiased}
     .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
 
+    
+    /* UI/UX Pro Max Skill — Bakery/Cafe #63 */
+    @media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+    :focus-visible{outline:2px solid var(--c-gold);outline-offset:2px;border-radius:4px}
+    
     /* NAV */
     .nav{position:sticky;top:0;z-index:100;background:rgba(250,246,240,0.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--c-line);padding:16px 0}
     .nav-inner{display:flex;align-items:center;justify-content:space-between}
@@ -31,7 +36,7 @@
     .nav-links a{font-size:0.85rem;font-weight:500;color:var(--c-muted);transition:color 0.2s var(--ease)}
     .nav-links a:hover{color:var(--c-brown)}
     .btn-wa{display:inline-flex;align-items:center;gap:8px;background:var(--c-wa);color:#fff;padding:10px 24px;border-radius:50px;font-weight:600;font-size:0.85rem;box-shadow:0 4px 16px rgba(37,211,102,0.3);transition:all 0.25s var(--ease)}
-    .btn-wa:hover{background:var(--c-wa-dark);transform:translateY(-2px);box-shadow:0 6px 24px rgba(37,211,102,0.4);color:#fff}
+    .btn-wa:hover{background:var(--c-wa-dark);transform:translateY(-2px) scale(1.02);box-shadow:0 6px 24px rgba(37,211,102,0.4);color:#fff}
 
     /* HERO */
     .hero{min-height:90vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--c-dark)}
@@ -88,7 +93,7 @@
     .product-price{font-weight:800;font-size:1.1rem;color:var(--c-brown)}
     .product-price span{font-size:0.72rem;font-weight:500;color:var(--c-muted)}
     .btn-pedir{display:inline-flex;align-items:center;gap:6px;background:var(--c-wa);color:#fff;padding:8px 18px;border-radius:50px;font-size:0.78rem;font-weight:600;transition:all 0.2s var(--ease)}
-    .btn-pedir:hover{background:var(--c-wa-dark);transform:translateY(-1px);color:#fff}
+    .btn-pedir:hover{background:var(--c-wa-dark);transform:translateY(-1px) scale(1.03);color:#fff}
     .badge-fav{display:inline-block;font-size:0.65rem;font-weight:700;background:rgba(201,162,39,0.12);color:var(--c-crust);padding:3px 10px;border-radius:50px;margin-bottom:4px}
     .badge-new{display:inline-block;font-size:0.65rem;font-weight:700;background:rgba(37,211,102,0.1);color:var(--c-wa-dark);padding:3px 10px;border-radius:50px;margin-bottom:4px}
     .menu-cta{text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--c-line)}
@@ -127,6 +132,16 @@
     .wa-float{position:fixed;bottom:24px;right:24px;z-index:90;width:56px;height:56px;border-radius:50%;background:var(--c-wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,0.4);transition:all 0.25s var(--ease);font-size:28px}
     .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,0.5)}
 
+    
+    .product-card{opacity:0;animation:cardReveal 0.4s var(--ease) forwards}
+    @keyframes cardReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .product-grid .product-card:nth-child(1){animation-delay:0.05s}
+    .product-grid .product-card:nth-child(2){animation-delay:0.1s}
+    .product-grid .product-card:nth-child(3){animation-delay:0.15s}
+    .product-grid .product-card:nth-child(4){animation-delay:0.2s}
+    .product-grid .product-card:nth-child(5){animation-delay:0.25s}
+    .product-grid .product-card:nth-child(6){animation-delay:0.3s}
+    
     /* RESPONSIVE */
     @media(max-width:768px){
       .nav-links a:not(.btn-wa){display:none}
