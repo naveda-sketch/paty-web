@@ -25,7 +25,7 @@
     "name": "La Madre — Masas Artesanales (Panadería Paty)",
     "url": "https://lamadremasa.mx",
     "telephone": "+525667751226",
-    "email": "hola@lamadremasa.mx",
+    "email": "patyfernandez@lamadremasa.mx",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "De Las Magnolias 111, Bugambilias",
@@ -200,6 +200,30 @@
     .menu-cta{text-align:center;margin-top:52px;padding-top:36px;border-top:1px solid var(--c-line)}
     .menu-cta p{font-size:0.8rem;color:var(--c-muted);margin-top:14px}
 
+    /* ─── Event Modal (Tier 4) ─── */
+    .modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(26,18,8,0.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity 280ms var(--ease),visibility 280ms}
+    .modal-overlay.active{opacity:1;visibility:visible}
+    .modal-card{background:var(--c-cream);border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(26,18,8,0.25);transform:translateY(24px) scale(0.97);transition:transform 280ms var(--ease);position:relative}
+    .modal-overlay.active .modal-card{transform:translateY(0) scale(1)}
+    .modal-header{padding:28px 28px 0;display:flex;align-items:flex-start;justify-content:space-between}
+    .modal-header h3{font-family:var(--font-d);font-size:1.35rem;color:var(--c-dark);line-height:1.3}
+    .modal-header p{font-size:0.78rem;color:var(--c-muted);margin-top:4px;line-height:1.5}
+    .modal-close{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--c-muted);transition:all 200ms var(--ease);flex-shrink:0;cursor:pointer}
+    .modal-close:hover{background:rgba(26,18,8,0.06);color:var(--c-dark)}
+    .modal-body{padding:24px 28px 28px}
+    .form-group{margin-bottom:18px}
+    .form-label{display:block;font-size:0.72rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--c-gold);margin-bottom:6px}
+    .form-input,.form-textarea,.form-select{width:100%;padding:12px 16px;border:1.5px solid var(--c-line);border-radius:10px;background:var(--c-card);font-family:var(--font-b);font-size:0.88rem;color:var(--c-dark);transition:border-color 200ms var(--ease),box-shadow 200ms var(--ease);-webkit-appearance:none;appearance:none}
+    .form-input:focus,.form-textarea:focus,.form-select:focus{outline:none;border-color:var(--c-gold);box-shadow:0 0 0 3px rgba(180,83,9,0.1)}
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--c-muted-light)}
+    .form-textarea{resize:vertical;min-height:88px}
+    .form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a7e70' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-note{font-size:0.7rem;color:var(--c-muted);margin-top:4px}
+    .btn-submit{width:100%;padding:14px;border-radius:var(--r-btn);background:var(--c-brown);color:#fff;font-family:var(--font-b);font-weight:600;font-size:0.88rem;letter-spacing:0.5px;transition:all 250ms var(--ease);margin-top:6px;cursor:pointer;min-height:48px}
+    .btn-submit:hover{background:var(--c-crust);transform:translateY(-1px);box-shadow:0 6px 20px rgba(120,53,15,0.25)}
+    .btn-submit:active{transform:translateY(0)}
+    @media(max-width:480px){.form-row{grid-template-columns:1fr}.modal-header,.modal-body{padding-left:20px;padding-right:20px}}
     .info-strip{background:var(--c-warm-muted);border-top:1px solid var(--c-line);border-bottom:1px solid var(--c-line)}
     .info-strip .container{padding:48px 24px}
     .info-strip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:900px;margin:0 auto}
@@ -416,7 +440,7 @@
     <details><summary>Cuánto tarda mi pedido?</summary><p>Como todo se hornea a pedido, el tiempo de entrega es de aproximadamente 2 dias habiles desde que confirmas tu pedido por WhatsApp.</p></details>
     <details><summary>Hacen entregas a domicilio?</summary><p>Sí, somos solo delivery. Entregamos en Zapopan y el Área Metropolitana de Guadalajara. Envío gratuito en un radio de 5km desde Bugambilias. A partir del km 5.01 se cobran $14 MXN por kilómetro adicional.</p></details>
     <details><summary>Que es la masa madre?</summary><p>La masa madre es un cultivo natural de harina y agua que fermenta durante 48 horas. No usamos levadura comercial, aditivos ni conservadores. El resultado es un pan con mejor sabor, textura y digestibilidad.</p></details>
-    <details><summary>Puedo hacer pedidos para eventos?</summary><p>Si, aceptamos pedidos especiales para eventos. Escribenos por WhatsApp con los detalles y te cotizamos.</p></details>
+    <details><summary>Puedo hacer pedidos para eventos?</summary><p>Sí, aceptamos pedidos para eventos, reuniones y celebraciones. <button onclick="document.getElementById('eventModal').classList.add('active')" style="background:none;border:none;color:var(--c-gold);font-weight:600;text-decoration:underline;cursor:pointer;font-size:inherit;font-family:inherit;padding:0">Llena nuestro formulario de eventos</button> y te contactamos en menos de 24 horas con una cotización personalizada.</p></details>
     <details><summary>Que metodos de pago aceptan?</summary><p>Pago seguro con tarjeta (crédito o débito) vía Stripe, directo en el chat de WhatsApp. No necesitas salir de la conversación — Paty te genera un link de pago en el mismo chat.</p></details>
     <details><summary>Cuál es su horario de operación?</summary><p>Horneamos y entregamos de lunes a viernes de 7:00am a 3:00pm. Pedidos por WhatsApp las 24 horas — Paty te confirma en horario de operación.</p></details>
     <details><summary>Tienen local para recoger?</summary><p>No, somos solo delivery. Entregamos directo a tu domicilio en Zapopan y el Área Metropolitana de Guadalajara.</p></details>
@@ -446,7 +470,7 @@
       </div>
     </div>
     <div><h4>Menu</h4><a href="#menu">Masa Madre</a><br><a href="#menu">Galletas N.Y.</a><br><a href="#menu">Repostería</a><br><a href="#menu">Pizzas</a></div>
-    <div><h4>Contacto</h4><a href="https://wa.me/525667751226" target="_blank" rel="noopener">WhatsApp: +52 566 775 1226</a><br><a href="mailto:hola@lamadremasa.mx">hola@lamadremasa.mx</a><div style="display:flex;gap:12px;margin-top:16px"><a href="https://instagram.com/lamadremasasartesanales" target="_blank" rel="noopener" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:all 0.2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.6)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="https://wa.me/525667751226" target="_blank" rel="noopener" aria-label="WhatsApp" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:all 0.2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.6)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.458-1.495A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a></div></div>
+    <div><h4>Contacto</h4><a href="https://wa.me/525667751226" target="_blank" rel="noopener">WhatsApp: +52 566 775 1226</a><br><a href="mailto:patyfernandez@lamadremasa.mx">patyfernandez@lamadremasa.mx</a><div style="display:flex;gap:12px;margin-top:16px"><a href="https://instagram.com/lamadremasasartesanales" target="_blank" rel="noopener" aria-label="Instagram" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:all 0.2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.6)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="https://wa.me/525667751226" target="_blank" rel="noopener" aria-label="WhatsApp" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;transition:all 0.2s"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(255,255,255,0.6)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.458-1.495A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg></a></div></div>
   </div>
   <div class="footer-bottom"><span>&copy; 2026 La Madre &middot; Masas Artesanales</span><span style="color:rgba(255,255,255,0.2)">Powered by GENyX</span></div>
 </div></footer>
@@ -463,5 +487,122 @@ function showTab(id,btn){
   btn.classList.add('active');btn.setAttribute('aria-selected','true');
 }
 </script>
+
+<!-- Event Inquiry Modal (Tier 4) -->
+<div id="eventModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle" onclick="if(event.target===this)this.classList.remove('active')">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div>
+        <h3 id="eventModalTitle">Cotiza tu evento</h3>
+        <p>Cuéntanos los detalles y te respondemos en menos de 24 horas con una propuesta personalizada.</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('eventModal').classList.remove('active')" aria-label="Cerrar formulario">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <form class="modal-body" id="eventForm" onsubmit="return submitEventForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="evt-name">Tu nombre *</label>
+          <input class="form-input" id="evt-name" name="nombre" type="text" placeholder="Patricia García" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="evt-phone">WhatsApp *</label>
+          <input class="form-input" id="evt-phone" name="telefono" type="tel" placeholder="33 1234 5678" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="evt-type">Tipo de evento *</label>
+        <select class="form-select" id="evt-type" name="tipo_evento" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="cumpleaños">Cumpleaños</option>
+          <option value="boda">Boda</option>
+          <option value="bautizo-comunion">Bautizo / Primera Comunión</option>
+          <option value="corporativo">Evento corporativo</option>
+          <option value="reunion-familiar">Reunión familiar</option>
+          <option value="baby-shower">Baby shower</option>
+          <option value="desayuno-brunch">Desayuno / Brunch</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="evt-date">Fecha del evento *</label>
+          <input class="form-input" id="evt-date" name="fecha" type="date" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="evt-guests">Personas aprox. *</label>
+          <input class="form-input" id="evt-guests" name="personas" type="number" placeholder="25" min="5" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="evt-products">¿Qué productos te interesan?</label>
+        <select class="form-select" id="evt-products" name="productos">
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="panes-masa-madre">Panes de masa madre</option>
+          <option value="galletas-ny">Galletas estilo New York</option>
+          <option value="pizzas">Pizzas artesanales</option>
+          <option value="reposteria">Repostería (cheesecake, pay, pastel)</option>
+          <option value="surtido-mixto">Surtido mixto de todo</option>
+          <option value="otro">Otro — lo describo abajo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="evt-notes">Detalles adicionales</label>
+        <textarea class="form-textarea" id="evt-notes" name="detalles" placeholder="Cuéntanos cualquier detalle: cantidad específica, preferencias de sabor, restricciones alimentarias, dirección de entrega…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="evt-budget">Presupuesto aproximado</label>
+        <select class="form-select" id="evt-budget" name="presupuesto">
+          <option value="" disabled selected>Selecciona un rango</option>
+          <option value="500-1500">$500 – $1,500 MXN</option>
+          <option value="1500-3000">$1,500 – $3,000 MXN</option>
+          <option value="3000-5000">$3,000 – $5,000 MXN</option>
+          <option value="5000+">$5,000+ MXN</option>
+          <option value="abierto">Abierto — propongan</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit" id="evt-submit">
+        <span id="evt-submit-text">Enviar solicitud de cotización</span>
+      </button>
+      <p class="form-note" style="text-align:center;margin-top:10px">Te respondemos por WhatsApp o correo en menos de 24 horas.</p>
+    </form>
+  </div>
+</div>
+<script>
+function submitEventForm(e){
+  e.preventDefault();
+  var f=document.getElementById('eventForm');
+  var d={};
+  new FormData(f).forEach(function(v,k){d[k]=v});
+  var subject=encodeURIComponent('Solicitud evento: '+d.tipo_evento+' — '+(d.fecha||'sin fecha'));
+  var body=encodeURIComponent(
+    'SOLICITUD DE EVENTO — La Madre Masas Artesanales\n'+
+    '═══════════════════════════════════════\n\n'+
+    'Nombre: '+d.nombre+'\n'+
+    'WhatsApp: '+d.telefono+'\n'+
+    'Tipo de evento: '+d.tipo_evento+'\n'+
+    'Fecha: '+d.fecha+'\n'+
+    'Personas: '+d.personas+'\n'+
+    'Productos: '+(d.productos||'No especificado')+'\n'+
+    'Presupuesto: '+(d.presupuesto||'No especificado')+'\n'+
+    'Detalles: '+(d.detalles||'Ninguno')+'\n\n'+
+    '— Enviado desde lamadremasa.mx'
+  );
+  window.location.href='mailto:patyfernandez@lamadremasa.mx?subject='+subject+'&body='+body;
+  var btn=document.getElementById('evt-submit-text');
+  btn.textContent='¡Solicitud enviada!';
+  setTimeout(function(){
+    document.getElementById('eventModal').classList.remove('active');
+    f.reset();
+    btn.textContent='Enviar solicitud de cotización';
+  },2000);
+  return false;
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){document.getElementById('eventModal').classList.remove('active')}
+});
+</script>
+
 </body>
 </html>
