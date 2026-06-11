@@ -502,7 +502,7 @@ function showTab(id,btn){
     </div>
     <form class="modal-body" id="eventForm" onsubmit="return submitEventForm(event)">
       <!-- Honeypot: invisible a humanos, bots lo llenan → reject silencioso -->
-      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true"><input type="text" name="_hp" tabindex="-1" autocomplete="off"></div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label" for="evt-name">Tu nombre *</label>
@@ -578,7 +578,7 @@ function submitEventForm(e){
   var d={};
   new FormData(f).forEach(function(v,k){d[k]=v});
   /* Honeypot: si 'website' tiene valor → bot → abort silencioso */
-  if(d.website){return false}
+  if(d._hp){return false}
   var btn=document.getElementById('evt-submit');
   var txt=document.getElementById('evt-submit-text');
   btn.disabled=true; txt.textContent='Enviando…';
