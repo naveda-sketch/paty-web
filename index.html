@@ -501,6 +501,8 @@ function showTab(id,btn){
       </button>
     </div>
     <form class="modal-body" id="eventForm" onsubmit="return submitEventForm(event)">
+      <!-- Honeypot: invisible a humanos, bots lo llenan → reject silencioso -->
+      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label" for="evt-name">Tu nombre *</label>
@@ -575,28 +577,40 @@ function submitEventForm(e){
   var f=document.getElementById('eventForm');
   var d={};
   new FormData(f).forEach(function(v,k){d[k]=v});
-  var subject=encodeURIComponent('Solicitud evento: '+d.tipo_evento+' — '+(d.fecha||'sin fecha'));
-  var body=encodeURIComponent(
-    'SOLICITUD DE EVENTO — La Madre Masas Artesanales\n'+
-    '═══════════════════════════════════════\n\n'+
-    'Nombre: '+d.nombre+'\n'+
-    'WhatsApp: '+d.telefono+'\n'+
-    'Tipo de evento: '+d.tipo_evento+'\n'+
-    'Fecha: '+d.fecha+'\n'+
-    'Personas: '+d.personas+'\n'+
-    'Productos: '+(d.productos||'No especificado')+'\n'+
-    'Presupuesto: '+(d.presupuesto||'No especificado')+'\n'+
-    'Detalles: '+(d.detalles||'Ninguno')+'\n\n'+
-    '— Enviado desde lamadremasa.mx'
-  );
-  window.location.href='mailto:patyfernandez@lamadremasa.mx?subject='+subject+'&body='+body;
-  var btn=document.getElementById('evt-submit-text');
-  btn.textContent='¡Solicitud enviada!';
-  setTimeout(function(){
-    document.getElementById('eventModal').classList.remove('active');
-    f.reset();
-    btn.textContent='Enviar solicitud de cotización';
-  },2000);
+  /* Honeypot: si 'website' tiene valor → bot → abort silencioso */
+  if(d.website){return false}
+  var btn=document.getElementById('evt-submit');
+  var txt=document.getElementById('evt-submit-text');
+  btn.disabled=true; txt.textContent='Enviando…';
+  /* REGLA 23: lead conectado → POST al backend (no mailto headless) */
+  fetch('https://paty-backend-dkzk.onrender.com/api/public/event-inquiry',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      nombre:d.nombre, whatsapp:d.telefono, tipo_evento:d.tipo_evento,
+      fecha:d.fecha, personas:d.personas, productos:d.productos||'',
+      detalles:d.detalles||'', presupuesto:d.presupuesto||'',
+      slug:'panaderia-paty'
+    })
+  }).then(function(r){return r.json()}).then(function(j){
+    if(j.ok){
+      txt.textContent='¡Solicitud recibida!';
+      btn.style.background='#2d5016';
+      setTimeout(function(){
+        document.getElementById('eventModal').classList.remove('active');
+        f.reset(); btn.disabled=false;
+        btn.style.background=''; txt.textContent='Enviar solicitud de cotización';
+      },2500);
+    }else{
+      txt.textContent='Error: '+(j.detail||'intenta de nuevo');
+      btn.disabled=false;
+      setTimeout(function(){txt.textContent='Enviar solicitud de cotización'},3000);
+    }
+  }).catch(function(){
+    txt.textContent='Error de conexión — intenta de nuevo';
+    btn.disabled=false;
+    setTimeout(function(){txt.textContent='Enviar solicitud de cotización'},3000);
+  });
   return false;
 }
 document.addEventListener('keydown',function(e){
